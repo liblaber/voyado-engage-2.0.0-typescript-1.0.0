@@ -13,7 +13,7 @@ A list of all methods in the `TrackingService` service. Click on the method name
 &nbsp;- ContactId: Contact id of the cart owner. GUID or short GUID. Ex: "ae16a9b4-f581-4568-8948-a96100b2afd4"
 &nbsp;- Language: Culture code of the cart. A corresponding product feed should be configured. Ex: "sv-SE"
 &nbsp;- Url: Url to the cart. Ex: "https://www.store.se/cart?id=006788ba-9f65-49c6-b3a0-2315d1854728"
-&nbsp;- Items: Collection of cart items. Ex: "[{"Sku":"90183744","Quantity":1},{"Sku":"90156607","Quantity":1}]" |
+&nbsp;- Items: Collection of cart items. Ex: ```"[{"Sku":"90183744","Quantity":1},{"Sku":"90156607","Quantity":1}]"``` |
 |[Cart_RegisterCarts](#cart_registercarts)| Register a batch of cart updates. Cart updates are processed according to update time. If multiple cart updates are registered with the same identifier only the latest update (according to update time) is considered.  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;Request model:
@@ -22,7 +22,7 @@ A list of all methods in the `TrackingService` service. Click on the method name
 &nbsp;- ContactId: Contact id of the cart owner. GUID or short GUID. Ex: "ae16a9b4-f581-4568-8948-a96100b2afd4"
 &nbsp;- Language: Culture code of the cart. A corresponding product feed should be configured. Ex: "sv-SE"
 &nbsp;- Url: Url to the cart. Ex: "https://www.store.se/cart?id=006788ba-9f65-49c6-b3a0-2315d1854728"
-&nbsp;- Items: Collection of cart items. Ex: "[{"Sku":"90183744","Quantity":1},{"Sku":"90156607","Quantity":1}]" |
+&nbsp;- Items: Collection of cart items. Ex: ```"[{"Sku":"90183744","Quantity":1},{"Sku":"90156607","Quantity":1}]"``` |
 |[ProductViewV_RegisterProductView](#productviewv_registerproductview)| Register a view of a specific product for a given contact.
 &nbsp;
 &nbsp;Request model:
@@ -58,7 +58,7 @@ Register an update to a specific cart for a given contact. Should be the latest 
 &nbsp;- ContactId: Contact id of the cart owner. GUID or short GUID. Ex: "ae16a9b4-f581-4568-8948-a96100b2afd4"
 &nbsp;- Language: Culture code of the cart. A corresponding product feed should be configured. Ex: "sv-SE"
 &nbsp;- Url: Url to the cart. Ex: "https://www.store.se/cart?id=006788ba-9f65-49c6-b3a0-2315d1854728"
-&nbsp;- Items: Collection of cart items. Ex: "[{"Sku":"90183744","Quantity":1},{"Sku":"90156607","Quantity":1}]"
+&nbsp;- Items: Collection of cart items. Ex: ```"[{"Sku":"90183744","Quantity":1},{"Sku":"90156607","Quantity":1}]"```
 
 - HTTP Method: `POST`
 - Endpoint: `/api/v2/tracking/carts`
