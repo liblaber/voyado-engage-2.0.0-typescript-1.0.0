@@ -40,7 +40,7 @@ Gets the first found member that matches the query.
 
 | Name  | Type   | Required | Description                                 |
 | :---- | :----- | :------- | :------------------------------------------ |
-| query | string | ✅       | {fieldId}:{value}, e.g. email:test@test.com |
+| query | string | ✅       | ```{fieldId}:{value}```, e.g. email:test@test.com |
 
 **Return Type**
 
