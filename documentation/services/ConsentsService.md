@@ -9,7 +9,7 @@ A list of all methods in the `ConsentsService` service. Click on the method name
 &nbsp;
 &nbsp;Example of metaData for a Consent:
 &nbsp;
-&nbsp;"metaData": {
+&nbsp;```"metaData": {
 &nbsp;&nbsp;&nbsp;"conditionText": {
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sv-SE": "Svensk villkorstext",
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"en-GB": "English text to show for condition"
@@ -22,7 +22,7 @@ A list of all methods in the `ConsentsService` service. Click on the method name
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sv-SE": "Svensk text att visa på länk",
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"en-GB": "English text to show on link"
 &nbsp;&nbsp;&nbsp;}
-&nbsp;} |
+&nbsp;} ```|
 
 ## Consents_GetConsents
 
@@ -30,7 +30,7 @@ Get all consents definitions
 &nbsp;
 &nbsp;Example of metaData for a Consent:
 &nbsp;
-&nbsp;"metaData": {
+&nbsp;```"metaData": {
 &nbsp;&nbsp;&nbsp;"conditionText": {
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sv-SE": "Svensk villkorstext",
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"en-GB": "English text to show for condition"
@@ -43,7 +43,7 @@ Get all consents definitions
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"sv-SE": "Svensk text att visa på länk",
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"en-GB": "English text to show on link"
 &nbsp;&nbsp;&nbsp;}
-&nbsp;}
+&nbsp;}```
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/consents`
