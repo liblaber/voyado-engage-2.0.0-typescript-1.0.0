@@ -2,27 +2,14 @@
 
 A list of all methods in the `ChallengesService` service. Click on the method name to view detailed information about that method.
 
-| Methods                                                                       | Description                                                                                |
-| :---------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------- |
-| [Challenge_GetChallengeById](#challenge_getchallengebyid)                     | Get an challenge assignment by id.                                                         |
-| [Challenge_GetChallengeDefinitionById](#challenge_getchallengedefinitionbyid) | Get a challenge definition by id.                                                          |
-| [Challenge_GetChallengeDefinitions](#challenge_getchallengedefinitions)       | Get a list of all the challenge definitions.                                               |
-| [Challenge_GetChallenges](#challenge_getchallenges)                           | Search for challenges for a contact.                                                       |
-| [Challenge_AddChallengeCheckPoints](#challenge_addchallengecheckpoints)       | Send in a list of checkpoints to be assigned to a some challenge for a number of contacts, |
-
-&nbsp;the endpoint will able to take max 1000 checkpoint rows.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;### The following fields should be provided:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;- definitionId: Must be a Guid
-&nbsp;- contactId: Must be a Guid
-&nbsp;- checkPointAmount: Number of checkpoints to assign to the challenge
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;### Important info:
-&nbsp;If some rows are not correct it will still result in an accepted response code and be skipped. Please
-&nbsp;check the response for NotAccepted items |
-|[Challenge_Consent](#challenge_consent)| Will assign the challenge for the contact and return true. If the contact already
-&nbsp;has been assigned for the challenge it will also return true. |
+| Methods                                                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| :---------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Challenge_GetChallengeById](#challenge_getchallengebyid)                     | Get an challenge assignment by id.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [Challenge_GetChallengeDefinitionById](#challenge_getchallengedefinitionbyid) | Get a challenge definition by id.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| [Challenge_GetChallengeDefinitions](#challenge_getchallengedefinitions)       | Get a list of all the challenge definitions.                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| [Challenge_GetChallenges](#challenge_getchallenges)                           | Search for challenges for a contact.                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| [Challenge_AddChallengeCheckPoints](#challenge_addchallengecheckpoints)       | Send in a list of checkpoints to be assigned to a some challenge for a number of contacts, the endpoint will able to take max 1000 checkpoint rows. ### The following fields should be provided: - definitionId: Must be a Guid - contactId: Must be a Guid - checkPointAmount: Number of checkpoints to assign to the challenge ### Important info: If some rows are not correct it will still result in an accepted response code and be skipped. Please check the response for NotAccepted items |
+| [Challenge_Consent](#challenge_consent)                                       | Will assign the challenge for the contact and return true. If the contact already has been assigned for the challenge it will also return true.                                                                                                                                                                                                                                                                                                                                                     |
 
 ## Challenge_GetChallengeById
 
@@ -178,18 +165,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## Challenge_AddChallengeCheckPoints
 
-Send in a list of checkpoints to be assigned to a some challenge for a number of contacts,
-&nbsp;the endpoint will able to take max 1000 checkpoint rows.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;### The following fields should be provided:
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;- definitionId: Must be a Guid
-&nbsp;- contactId: Must be a Guid
-&nbsp;- checkPointAmount: Number of checkpoints to assign to the challenge
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;### Important info:
-&nbsp;If some rows are not correct it will still result in an accepted response code and be skipped. Please
-&nbsp;check the response for NotAccepted items
+Send in a list of checkpoints to be assigned to a some challenge for a number of contacts, the endpoint will able to take max 1000 checkpoint rows. ### The following fields should be provided: - definitionId: Must be a Guid - contactId: Must be a Guid - checkPointAmount: Number of checkpoints to assign to the challenge ### Important info: If some rows are not correct it will still result in an accepted response code and be skipped. Please check the response for NotAccepted items
 
 - HTTP Method: `POST`
 - Endpoint: `/api/v2/challenges/checkpoints`
@@ -222,8 +198,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## Challenge_Consent
 
-Will assign the challenge for the contact and return true. If the contact already
-&nbsp;has been assigned for the challenge it will also return true.
+Will assign the challenge for the contact and return true. If the contact already has been assigned for the challenge it will also return true.
 
 - HTTP Method: `POST`
 - Endpoint: `/api/v2/challenges/definitions/{id}/assign`
@@ -256,5 +231,3 @@ import { VoyadoEngage } from 'voyado_engage';
   console.log(data);
 })();
 ```
-
-<!-- This file was generated by liblab | https://liblab.com/ -->

@@ -2,56 +2,14 @@
 
 A list of all methods in the `TransactionsService` service. Click on the method name to view detailed information about that method.
 
-| Methods                                                                 | Description                                                                            |
-| :---------------------------------------------------------------------- | :------------------------------------------------------------------------------------- |
-| [ImportTransactions_ImportReceipts](#importtransactions_importreceipts) | The /receipts endpoint is used to store each customers purchase and returns in Engage. |
-
-&nbsp;All fields in the data model can be used for segmentation and analysis in Engage.
-&nbsp;If you want to send out transactional emails, use the /orders endpoint instead.
-&nbsp;
-&nbsp;### Identification
-&nbsp;
-&nbsp;To be able to store a receipt in Voyado, you need to connect it to a specific
-&nbsp;contact.
-&nbsp;
-&nbsp;In the example payload below the contact type is “Member” and the key type is “email”
-&nbsp;The key has to be a unique data field for the specific contact type,
-&nbsp;normally one of these fields:
-&nbsp;- contactId
-&nbsp;- email
-&nbsp;- mobilePhone
-&nbsp;- memberNumber
-&nbsp;- externalId
-&nbsp;- socialSecurityNumber (personal identity number - only Swedish or Finnish) |
-|[ImportTransactions_Import](#importtransactions_import)| Required on **receipt**:
-&nbsp;externalId (Unique receipt id), invoiceNumber, customerKey,
-&nbsp;customerKeyType, invoiceCreatedDate, InvoiceModifiedDate, StoreName, StoreNumber
-&nbsp;
-&nbsp;Required on **transaction**:
-&nbsp;externalId (Unique transaction id), articleNr, quantity, price and type (RETURN/DISCOUNT/PURCHASE)
-&nbsp;Note! It's recommended to include Sku, as it's a required
-&nbsp;attribute when enriching purchase data from article data. |
+| Methods                                                                 | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| :---------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [ImportTransactions_ImportReceipts](#importtransactions_importreceipts) | The /receipts endpoint is used to store each customers purchase and returns in Engage. All fields in the data model can be used for segmentation and analysis in Engage. If you want to send out transactional emails, use the /orders endpoint instead. ### Identification To be able to store a receipt in Voyado, you need to connect it to a specific contact. In the example payload below the contact type is ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œMemberÃƒÂ¢Ã¢â€šÂ¬Ã‚Â and the key type is ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œemailÃƒÂ¢Ã¢â€šÂ¬Ã‚Â The key has to be a unique data field for the specific contact type, normally one of these fields: - contactId - email - mobilePhone - memberNumber - externalId - socialSecurityNumber (personal identity number - only Swedish or Finnish) |
+| [ImportTransactions_Import](#importtransactions_import)                 | Required on **receipt**: externalId (Unique receipt id), invoiceNumber, customerKey, customerKeyType, invoiceCreatedDate, InvoiceModifiedDate, StoreName, StoreNumber Required on **transaction**: externalId (Unique transaction id), articleNr, quantity, price and type (RETURN/DISCOUNT/PURCHASE) Note! It's recommended to include Sku, as it's a required attribute when enriching purchase data from article data.                                                                                                                                                                                                                                                                                                                                     |
 
 ## ImportTransactions_ImportReceipts
 
-The /receipts endpoint is used to store each customers purchase and returns in Engage.
-&nbsp;All fields in the data model can be used for segmentation and analysis in Engage.
-&nbsp;If you want to send out transactional emails, use the /orders endpoint instead.
-&nbsp;
-&nbsp;### Identification
-&nbsp;
-&nbsp;To be able to store a receipt in Voyado, you need to connect it to a specific
-&nbsp;contact.
-&nbsp;
-&nbsp;In the example payload below the contact type is “Member” and the key type is “email”
-&nbsp;The key has to be a unique data field for the specific contact type,
-&nbsp;normally one of these fields:
-&nbsp;- contactId
-&nbsp;- email
-&nbsp;- mobilePhone
-&nbsp;- memberNumber
-&nbsp;- externalId
-&nbsp;- socialSecurityNumber (personal identity number - only Swedish or Finnish)
+The /receipts endpoint is used to store each customers purchase and returns in Engage. All fields in the data model can be used for segmentation and analysis in Engage. If you want to send out transactional emails, use the /orders endpoint instead. ### Identification To be able to store a receipt in Voyado, you need to connect it to a specific contact. In the example payload below the contact type is ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œMemberÃƒÂ¢Ã¢â€šÂ¬Ã‚Â and the key type is ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œemailÃƒÂ¢Ã¢â€šÂ¬Ã‚Â The key has to be a unique data field for the specific contact type, normally one of these fields: - contactId - email - mobilePhone - memberNumber - externalId - socialSecurityNumber (personal identity number - only Swedish or Finnish)
 
 - HTTP Method: `POST`
 - Endpoint: `/api/v2/receipts`
@@ -108,7 +66,7 @@ import {
   };
 
   const receiptPaymentMethod: ReceiptPaymentMethod = {
-    type_: 'type',
+    type: 'type',
     description: 'description',
     value: 5.08,
     extraData: [receiptExtraDataItem],
@@ -118,12 +76,12 @@ import {
 
   const receiptItemDiscount: ReceiptItemDiscount = {
     value: 9.91,
-    type_: 'type',
+    type: 'type',
     description: 'description',
   };
 
   const receiptItem: ReceiptItem = {
-    type_: receiptItemType,
+    type: receiptItemType,
     sku: 'sku',
     quantity: 1,
     packQuantity: 8.92,
@@ -178,14 +136,7 @@ import {
 
 ## ImportTransactions_Import
 
-Required on **receipt**:
-&nbsp;externalId (Unique receipt id), invoiceNumber, customerKey,
-&nbsp;customerKeyType, invoiceCreatedDate, InvoiceModifiedDate, StoreName, StoreNumber
-&nbsp;
-&nbsp;Required on **transaction**:
-&nbsp;externalId (Unique transaction id), articleNr, quantity, price and type (RETURN/DISCOUNT/PURCHASE)
-&nbsp;Note! It's recommended to include Sku, as it's a required
-&nbsp;attribute when enriching purchase data from article data.
+Required on **receipt**: externalId (Unique receipt id), invoiceNumber, customerKey, customerKeyType, invoiceCreatedDate, InvoiceModifiedDate, StoreName, StoreNumber Required on **transaction**: externalId (Unique transaction id), articleNr, quantity, price and type (RETURN/DISCOUNT/PURCHASE) Note! It's recommended to include Sku, as it's a required attribute when enriching purchase data from article data.
 
 - HTTP Method: `POST`
 - Endpoint: `/api/v2/transactions`
@@ -219,5 +170,3 @@ import { ImportTransactionsObject, VoyadoEngage } from 'voyado_engage';
   console.log(data);
 })();
 ```
-
-<!-- This file was generated by liblab | https://liblab.com/ -->

@@ -2,38 +2,13 @@
 
 A list of all methods in the `OrdersService` service. Click on the method name to view detailed information about that method.
 
-| Methods                                       | Description                                                                                                                        |
-| :-------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------- |
-| [Orders_RegisterOrder](#orders_registerorder) | The /orders endpoint is used to trigger automation flows in Engage and send out information about the order to your end customers. |
-
-&nbsp;It could be used, for example, for an order confirmation, delivery confirmation or a return confirmation from an e-commerce
-&nbsp;system or store. The endpoint is called every time a change happens that you want to act on in Engage. All the data needed must
-&nbsp;be sent with every call, since this endpoint saves no data concerning orders. If you need to save data, use the /receipts endpoint instead.
-&nbsp;
-&nbsp;Note that there is no check against previous requests of the same order,
-&nbsp;thus two identical requests to this endpoint will trigger any matching automation twice.
-&nbsp;&nbsp;
-&nbsp;To accept an order:
-&nbsp;- The different orderStatus and paymentStatus values must be configured in Voyado.
-&nbsp;- totalGrossPrice, totalTax, item quantities etc. must be correct and add up.
-&nbsp;
-&nbsp;If the order is not accepted, a response with HTTP Status Code 400 or 422 and an error code will be returned. |
+| Methods                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| :-------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Orders_RegisterOrder](#orders_registerorder) | The /orders endpoint is used to trigger automation flows in Engage and send out information about the order to your end customers. It could be used, for example, for an order confirmation, delivery confirmation or a return confirmation from an e-commerce system or store. The endpoint is called every time a change happens that you want to act on in Engage. All the data needed must be sent with every call, since this endpoint saves no data concerning orders. If you need to save data, use the /receipts endpoint instead. Note that there is no check against previous requests of the same order, thus two identical requests to this endpoint will trigger any matching automation twice. To accept an order: - The different orderStatus and paymentStatus values must be configured in Voyado. - totalGrossPrice, totalTax, item quantities etc. must be correct and add up. If the order is not accepted, a response with HTTP Status Code 400 or 422 and an error code will be returned. |
 
 ## Orders_RegisterOrder
 
-The /orders endpoint is used to trigger automation flows in Engage and send out information about the order to your end customers.
-&nbsp;It could be used, for example, for an order confirmation, delivery confirmation or a return confirmation from an e-commerce
-&nbsp;system or store. The endpoint is called every time a change happens that you want to act on in Engage. All the data needed must
-&nbsp;be sent with every call, since this endpoint saves no data concerning orders. If you need to save data, use the /receipts endpoint instead.
-&nbsp;
-&nbsp;Note that there is no check against previous requests of the same order,
-&nbsp;thus two identical requests to this endpoint will trigger any matching automation twice.
-&nbsp;&nbsp;
-&nbsp;To accept an order:
-&nbsp;- The different orderStatus and paymentStatus values must be configured in Voyado.
-&nbsp;- totalGrossPrice, totalTax, item quantities etc. must be correct and add up.
-&nbsp;
-&nbsp;If the order is not accepted, a response with HTTP Status Code 400 or 422 and an error code will be returned.
+The /orders endpoint is used to trigger automation flows in Engage and send out information about the order to your end customers. It could be used, for example, for an order confirmation, delivery confirmation or a return confirmation from an e-commerce system or store. The endpoint is called every time a change happens that you want to act on in Engage. All the data needed must be sent with every call, since this endpoint saves no data concerning orders. If you need to save data, use the /receipts endpoint instead. Note that there is no check against previous requests of the same order, thus two identical requests to this endpoint will trigger any matching automation twice. To accept an order: - The different orderStatus and paymentStatus values must be configured in Voyado. - totalGrossPrice, totalTax, item quantities etc. must be correct and add up. If the order is not accepted, a response with HTTP Status Code 400 or 422 and an error code will be returned.
 
 - HTTP Method: `POST`
 - Endpoint: `/api/v2/orders`
@@ -74,7 +49,7 @@ import { Order, OrderContact, OrderFee, OrderItem, OrderPaymentMethod, TaxDetail
   };
 
   const orderPaymentMethod: OrderPaymentMethod = {
-    type_: 'type',
+    type: 'type',
     description: 'description',
     value: 7.44,
     extraData: [],
@@ -84,13 +59,13 @@ import { Order, OrderContact, OrderFee, OrderItem, OrderPaymentMethod, TaxDetail
 
   const orderItemDiscount: OrderItemDiscount = {
     value: -273220990.98,
-    type_: 'type',
+    type: 'type',
     description: 'description',
     extraData: [],
   };
 
   const orderItem: OrderItem = {
-    type_: orderItemType,
+    type: orderItemType,
     sku: 'sku',
     quantity: 0.1,
     grossPaidPrice: 3.23,
@@ -147,5 +122,3 @@ import { Order, OrderContact, OrderFee, OrderItem, OrderPaymentMethod, TaxDetail
   console.log(data);
 })();
 ```
-
-<!-- This file was generated by liblab | https://liblab.com/ -->

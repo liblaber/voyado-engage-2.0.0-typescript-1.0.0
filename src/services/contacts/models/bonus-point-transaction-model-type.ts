@@ -1,0 +1,19 @@
+import { z } from 'zod';
+
+export const bonusPointTransactionModelType = z.enum([
+  'Purchase',
+  'Adjustment',
+  'Recruitment',
+  'PurchaseReduction',
+  'Return',
+  'BonusCheck',
+  'DueDate',
+  'StartBonus',
+  'BonusPromotion',
+  'BonusPromotionReturn',
+  'FromAutomation',
+  'BonusBalanceAdjustment',
+  'PurchaseWithPoints',
+]);
+
+export type BonusPointTransactionModelType = z.infer<typeof bonusPointTransactionModelType>;

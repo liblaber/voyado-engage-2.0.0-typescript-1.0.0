@@ -2,94 +2,43 @@
 
 A list of all methods in the `ContactsService` service. Click on the method name to view detailed information about that method.
 
-| Methods                             | Description                      |
-| :---------------------------------- | :------------------------------- |
-| [ContactsV_Count](#contactsv_count) | Get number of approved contacts. |
-
-&nbsp;
-&nbsp;This is a cached value that will be updated with a
-&nbsp;set frequency (normally once every 20 min). |
-|[ContactsV_GetContactById](#contactsv_getcontactbyid)| Get a single contact, using the unique identifier.
-&nbsp;
-&nbsp;The dynamic fields of the response object depend on
-&nbsp;the current instance configuration. |
-|[ContactsV_UpdateContactPost](#contactsv_updatecontactpost)| Update one or several fields of a single contact.
-&nbsp;Dont send an empty value unless you want it to be empty. |
-|[ContactsV_DeleteWithHeaderParam](#contactsv_deletewithheaderparam)| |
-|[ContactsV_CountByContactType](#contactsv_countbycontacttype)| Get number of approved contacts of given type.
-&nbsp;
-&nbsp;This is a cached value that will be updated with a
-&nbsp;set frequency (normally once every 20 min). |
-|[ContactBulk_GetBulkStatus](#contactbulk_getbulkstatus)| |
-|[ContactsV_GetContactByTypeAndKeyValueInUrlAsync](#contactsv_getcontactbytypeandkeyvalueinurlasync)| ! Please be aware that this endpoint is currently usable with either the key value being provided through !
-&nbsp;! the path or a query param. Hence there being two of the same endpoints. !
-&nbsp;! We recommend that you use the query param version (the first) as it is the more versatile one of the two !
-&nbsp;
-&nbsp;Get a single contact of a certain type, using a key
-&nbsp;value that corresponds to the current instance configuration. This can
-&nbsp;only be used for contact types with exactly ONE key.
-&nbsp;
-&nbsp;The dynamic fields of the response object depend on
-&nbsp;the current configuration. |
-|[ProductRecommendation_GetProductRecommendations](#productrecommendation_getproductrecommendations)| |
-|[ContactRetailKpi_GetPurchaseHistory](#contactretailkpi_getpurchasehistory)| Following summary shows the purchase history for a single contact, over all time, 12 months and 24 months. |
-|[BackInStockSubscription_GetByContactId](#backinstocksubscription_getbycontactid)| Get back in stock subscriptions for a contact |
-|[ContactsV_GetContactByExternalIdAsync](#contactsv_getcontactbyexternalidasync)| Get a single contact of a certain type, using the
-&nbsp;contact's external id.
-&nbsp;
-&nbsp;The dynamic fields of the response object depend on
-&nbsp;the current configuration. |
-|[ContactsV_GetContactByTypeAndKeyValueAsync](#contactsv_getcontactbytypeandkeyvalueasync)| Get a single contact of a certain type, using a key
-&nbsp;value that corresponds to the current instance configuration. This can
-&nbsp;only be used for contact types with exactly ONE key.
-&nbsp;
-&nbsp;The dynamic fields of the response object depend on
-&nbsp;the current configuration. |
-|[ContactMessage_GetLatestMessagesByContactId](#contactmessage_getlatestmessagesbycontactid)| Get the latest messages (max 500) a contact has received |
-|[Transactions_GetTransactionsByContactId](#transactions_gettransactionsbycontactid)| Get all purchase transactions for a single contact with
-&nbsp;optional offset and number of transactions in response. |
-|[BonusPointTransactions_GetBonusPointTransactionsForContact](#bonuspointtransactions_getbonuspointtransactionsforcontact)| |
-|[ContactsV_GetChangedContactIds](#contactsv_getchangedcontactids)| |
-|[OfferPromotions_GetPromotionsForContact](#offerpromotions_getpromotionsforcontact)| Get available promotions for a contact. To filter on redemptionChannelType add it as a query string
-&nbsp;?redemptionChannelType=POS
-&nbsp;It can be POS, ECOM or OTHER |
-|[ContactOverview_GetContactIdAsync](#contactoverview_getcontactidasync)| Get the contactId for one (or several) contacts using either:
-&nbsp;- email
-&nbsp;- socialSecurityNumber
-&nbsp;- mobilePhone
-&nbsp;- customKey (the customKey must be configured by your supplier)
-&nbsp;- any - the any field can contain email, socialSecurityNumber, mobilePhone or the custom key (and are checked in that order) |
-|[ContactsV_CreateContactHeaderParam](#contactsv_createcontactheaderparam)| Create a new, approved contact.
-&nbsp;
-&nbsp;If the contacts key identifier (example: Email) already exists : returns the GUID of the first entry found. |
-|[ContactsV_PromoteToMember](#contactsv_promotetomember)| Promote a contact to a member with one or several required fields. |
-|[ContactBulk_CreateContactsInBulk](#contactbulk_createcontactsinbulk)| |
-|[ContactBulk_UpdateContactsInBulk](#contactbulk_updatecontactsinbulk)| |
-|[ContactPreferences_AcceptsSms](#contactpreferences_acceptssms)| Update the preference that indicates whether or not
-&nbsp;a contact accepts to be contacted via sms. This will also approve an unapproved contact.
-&nbsp;The primary way of updating a contact preference is through the update contacts endpoint. |
-|[BonusPointTransactions_AdjustRewardPoints](#bonuspointtransactions_adjustrewardpoints)| Adds reward points to a contact. |
-|[ContactPreferences_AcceptsEmail](#contactpreferences_acceptsemail)| Update the preference that indicates whether or not
-&nbsp;a contact accepts to be contacted via email. This will also approve an unapproved contact.
-&nbsp;The primary way of updating a contact preference is through the update contacts endpoint. |
-|[ContactPreferences_AcceptsPostal](#contactpreferences_acceptspostal)| Update the preference that indicates whether or not
-&nbsp;a contact accepts to be contacted via regular mail. This will also approve an unapproved contact.
-&nbsp;The primary way of updating a contact preference is through the update contacts endpoint. |
-|[AssignPromotion_Assign](#assignpromotion_assign)| Assign a promotion (multichannel offer only) to a Contact using the internal Contact Id
-&nbsp;and the id of the promotion |
-|[OfferPromotions_Redeem](#offerpromotions_redeem)| Redeem a promotion (multichannel offer or mobile swipe) for a Contact using the internal Contact Id
-&nbsp;
-&nbsp;Redemption channel can be POS, ECOM or OTHER. |
-|[ContactMessage_SmsUnsubscribeContact](#contactmessage_smsunsubscribecontact)| Optional messageId input if user wants to unsubscribe on specific message instead of last sent Sms |
-|[ContactMessage_EmailUnsubscribeContact](#contactmessage_emailunsubscribecontact)| Optional messageId input if user wants to unsubscribe on specific message instead of last sent email |
-|[ContactsV_UpdateContactType](#contactsv_updatecontacttype)| Updates the contactType for a contact if all expected contact data is available |
+| Methods                                                                                                                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| :------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [ContactsV_Count](#contactsv_count)                                                                                       | Get number of approved contacts. This is a cached value that will be updated with a set frequency (normally once every 20 min).                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [ContactsV_GetContactById](#contactsv_getcontactbyid)                                                                     | Get a single contact, using the unique identifier. The dynamic fields of the response object depend on the current instance configuration.                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [ContactsV_UpdateContactPost](#contactsv_updatecontactpost)                                                               | Update one or several fields of a single contact. Dont send an empty value unless you want it to be empty.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [ContactsV_DeleteWithHeaderParam](#contactsv_deletewithheaderparam)                                                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [ContactsV_CountByContactType](#contactsv_countbycontacttype)                                                             | Get number of approved contacts of given type. This is a cached value that will be updated with a set frequency (normally once every 20 min).                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| [ContactBulk_GetBulkStatus](#contactbulk_getbulkstatus)                                                                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [ContactsV_GetContactByTypeAndKeyValueInUrlAsync](#contactsv_getcontactbytypeandkeyvalueinurlasync)                       | ! Please be aware that this endpoint is currently usable with either the key value being provided through ! ! the path or a query param. Hence there being two of the same endpoints. ! ! We recommend that you use the query param version (the first) as it is the more versatile one of the two ! Get a single contact of a certain type, using a key value that corresponds to the current instance configuration. This can only be used for contact types with exactly ONE key. The dynamic fields of the response object depend on the current configuration. |
+| [ProductRecommendation_GetProductRecommendations](#productrecommendation_getproductrecommendations)                       |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [ContactRetailKpi_GetPurchaseHistory](#contactretailkpi_getpurchasehistory)                                               | Following summary shows the purchase history for a single contact, over all time, 12 months and 24 months.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| [BackInStockSubscription_GetByContactId](#backinstocksubscription_getbycontactid)                                         | Get back in stock subscriptions for a contact                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| [ContactsV_GetContactByExternalIdAsync](#contactsv_getcontactbyexternalidasync)                                           | Get a single contact of a certain type, using the contact's external id. The dynamic fields of the response object depend on the current configuration.                                                                                                                                                                                                                                                                                                                                                                                                             |
+| [ContactsV_GetContactByTypeAndKeyValueAsync](#contactsv_getcontactbytypeandkeyvalueasync)                                 | Get a single contact of a certain type, using a key value that corresponds to the current instance configuration. This can only be used for contact types with exactly ONE key. The dynamic fields of the response object depend on the current configuration.                                                                                                                                                                                                                                                                                                      |
+| [ContactMessage_GetLatestMessagesByContactId](#contactmessage_getlatestmessagesbycontactid)                               | Get the latest messages (max 500) a contact has received                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| [Transactions_GetTransactionsByContactId](#transactions_gettransactionsbycontactid)                                       | Get all purchase transactions for a single contact with optional offset and number of transactions in response.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [BonusPointTransactions_GetBonusPointTransactionsForContact](#bonuspointtransactions_getbonuspointtransactionsforcontact) |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [ContactsV_GetChangedContactIds](#contactsv_getchangedcontactids)                                                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [OfferPromotions_GetPromotionsForContact](#offerpromotions_getpromotionsforcontact)                                       | Get available promotions for a contact. To filter on redemptionChannelType add it as a query string ?redemptionChannelType=POS It can be POS, ECOM or OTHER                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [ContactOverview_GetContactIdAsync](#contactoverview_getcontactidasync)                                                   | Get the contactId for one (or several) contacts using either: - email - socialSecurityNumber - mobilePhone - customKey (the customKey must be configured by your supplier) - any - the any field can contain email, socialSecurityNumber, mobilePhone or the custom key (and are checked in that order)                                                                                                                                                                                                                                                             |
+| [ContactsV_CreateContactHeaderParam](#contactsv_createcontactheaderparam)                                                 | Create a new, approved contact. If the contacts key identifier (example: Email) already exists : returns the GUID of the first entry found.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| [ContactsV_PromoteToMember](#contactsv_promotetomember)                                                                   | Promote a contact to a member with one or several required fields.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [ContactBulk_CreateContactsInBulk](#contactbulk_createcontactsinbulk)                                                     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [ContactBulk_UpdateContactsInBulk](#contactbulk_updatecontactsinbulk)                                                     |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| [ContactPreferences_AcceptsSms](#contactpreferences_acceptssms)                                                           | Update the preference that indicates whether or not a contact accepts to be contacted via sms. This will also approve an unapproved contact. The primary way of updating a contact preference is through the update contacts endpoint.                                                                                                                                                                                                                                                                                                                              |
+| [BonusPointTransactions_AdjustRewardPoints](#bonuspointtransactions_adjustrewardpoints)                                   | Adds reward points to a contact.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| [ContactPreferences_AcceptsEmail](#contactpreferences_acceptsemail)                                                       | Update the preference that indicates whether or not a contact accepts to be contacted via email. This will also approve an unapproved contact. The primary way of updating a contact preference is through the update contacts endpoint.                                                                                                                                                                                                                                                                                                                            |
+| [ContactPreferences_AcceptsPostal](#contactpreferences_acceptspostal)                                                     | Update the preference that indicates whether or not a contact accepts to be contacted via regular mail. This will also approve an unapproved contact. The primary way of updating a contact preference is through the update contacts endpoint.                                                                                                                                                                                                                                                                                                                     |
+| [AssignPromotion_Assign](#assignpromotion_assign)                                                                         | Assign a promotion (multichannel offer only) to a Contact using the internal Contact Id and the id of the promotion                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| [OfferPromotions_Redeem](#offerpromotions_redeem)                                                                         | Redeem a promotion (multichannel offer or mobile swipe) for a Contact using the internal Contact Id Redemption channel can be POS, ECOM or OTHER.                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| [ContactMessage_SmsUnsubscribeContact](#contactmessage_smsunsubscribecontact)                                             | Optional messageId input if user wants to unsubscribe on specific message instead of last sent Sms                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| [ContactMessage_EmailUnsubscribeContact](#contactmessage_emailunsubscribecontact)                                         | Optional messageId input if user wants to unsubscribe on specific message instead of last sent email                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| [ContactsV_UpdateContactType](#contactsv_updatecontacttype)                                                               | Updates the contactType for a contact if all expected contact data is available                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 ## ContactsV_Count
 
-Get number of approved contacts.
-&nbsp;
-&nbsp;This is a cached value that will be updated with a
-&nbsp;set frequency (normally once every 20 min).
+Get number of approved contacts. This is a cached value that will be updated with a set frequency (normally once every 20 min).
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/count`
@@ -116,10 +65,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## ContactsV_GetContactById
 
-Get a single contact, using the unique identifier.
-&nbsp;
-&nbsp;The dynamic fields of the response object depend on
-&nbsp;the current instance configuration.
+Get a single contact, using the unique identifier. The dynamic fields of the response object depend on the current instance configuration.
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/{contactId}`
@@ -152,8 +98,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## ContactsV_UpdateContactPost
 
-Update one or several fields of a single contact.
-&nbsp;Dont send an empty value unless you want it to be empty.
+Update one or several fields of a single contact. Dont send an empty value unless you want it to be empty.
 
 - HTTP Method: `POST`
 - Endpoint: `/api/v2/contacts/{contactId}`
@@ -221,10 +166,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## ContactsV_CountByContactType
 
-Get number of approved contacts of given type.
-&nbsp;
-&nbsp;This is a cached value that will be updated with a
-&nbsp;set frequency (normally once every 20 min).
+Get number of approved contacts of given type. This is a cached value that will be updated with a set frequency (normally once every 20 min).
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/{contactType}/count`
@@ -290,16 +232,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## ContactsV_GetContactByTypeAndKeyValueInUrlAsync
 
-! Please be aware that this endpoint is currently usable with either the key value being provided through !
-&nbsp;! the path or a query param. Hence there being two of the same endpoints. !
-&nbsp;! We recommend that you use the query param version (the first) as it is the more versatile one of the two !
-&nbsp;
-&nbsp;Get a single contact of a certain type, using a key
-&nbsp;value that corresponds to the current instance configuration. This can
-&nbsp;only be used for contact types with exactly ONE key.
-&nbsp;
-&nbsp;The dynamic fields of the response object depend on
-&nbsp;the current configuration.
+! Please be aware that this endpoint is currently usable with either the key value being provided through ! ! the path or a query param. Hence there being two of the same endpoints. ! ! We recommend that you use the query param version (the first) as it is the more versatile one of the two ! Get a single contact of a certain type, using a key value that corresponds to the current instance configuration. This can only be used for contact types with exactly ONE key. The dynamic fields of the response object depend on the current configuration.
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/{contactType}/bykey/{keyValue}`
@@ -429,11 +362,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## ContactsV_GetContactByExternalIdAsync
 
-Get a single contact of a certain type, using the
-&nbsp;contact's external id.
-&nbsp;
-&nbsp;The dynamic fields of the response object depend on
-&nbsp;the current configuration.
+Get a single contact of a certain type, using the contact's external id. The dynamic fields of the response object depend on the current configuration.
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/{contactType}/byexternalid/{externalId}`
@@ -467,12 +396,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## ContactsV_GetContactByTypeAndKeyValueAsync
 
-Get a single contact of a certain type, using a key
-&nbsp;value that corresponds to the current instance configuration. This can
-&nbsp;only be used for contact types with exactly ONE key.
-&nbsp;
-&nbsp;The dynamic fields of the response object depend on
-&nbsp;the current configuration.
+Get a single contact of a certain type, using a key value that corresponds to the current instance configuration. This can only be used for contact types with exactly ONE key. The dynamic fields of the response object depend on the current configuration.
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/{contactType}/bykey`
@@ -544,8 +468,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## Transactions_GetTransactionsByContactId
 
-Get all purchase transactions for a single contact with
-&nbsp;optional offset and number of transactions in response.
+Get all purchase transactions for a single contact with optional offset and number of transactions in response.
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/{contactId}/transactions`
@@ -658,9 +581,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## OfferPromotions_GetPromotionsForContact
 
-Get available promotions for a contact. To filter on redemptionChannelType add it as a query string
-&nbsp;?redemptionChannelType=POS
-&nbsp;It can be POS, ECOM or OTHER
+Get available promotions for a contact. To filter on redemptionChannelType add it as a query string ?redemptionChannelType=POS It can be POS, ECOM or OTHER
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/{contactId}/promotions`
@@ -696,12 +617,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## ContactOverview_GetContactIdAsync
 
-Get the contactId for one (or several) contacts using either:
-&nbsp;- email
-&nbsp;- socialSecurityNumber
-&nbsp;- mobilePhone
-&nbsp;- customKey (the customKey must be configured by your supplier)
-&nbsp;- any - the any field can contain email, socialSecurityNumber, mobilePhone or the custom key (and are checked in that order)
+Get the contactId for one (or several) contacts using either: - email - socialSecurityNumber - mobilePhone - customKey (the customKey must be configured by your supplier) - any - the any field can contain email, socialSecurityNumber, mobilePhone or the custom key (and are checked in that order)
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/id`
@@ -715,7 +631,7 @@ Get the contactId for one (or several) contacts using either:
 | socialSecurityNumber | string | ❌       |             |
 | mobilePhone          | string | ❌       |             |
 | customKey            | string | ❌       |             |
-| any\_                | string | ❌       |             |
+| any                  | string | ❌       |             |
 
 **Return Type**
 
@@ -737,7 +653,7 @@ import { VoyadoEngage } from 'voyado_engage';
     socialSecurityNumber: 'socialSecurityNumber',
     mobilePhone: 'mobilePhone',
     customKey: 'customKey',
-    any_: 'any',
+    any: 'any',
   });
 
   console.log(data);
@@ -746,9 +662,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## ContactsV_CreateContactHeaderParam
 
-Create a new, approved contact.
-&nbsp;
-&nbsp;If the contacts key identifier (example: Email) already exists : returns the GUID of the first entry found.
+Create a new, approved contact. If the contacts key identifier (example: Email) already exists : returns the GUID of the first entry found.
 
 - HTTP Method: `POST`
 - Endpoint: `/api/v2/contacts`
@@ -895,9 +809,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## ContactPreferences_AcceptsSms
 
-Update the preference that indicates whether or not
-&nbsp;a contact accepts to be contacted via sms. This will also approve an unapproved contact.
-&nbsp;The primary way of updating a contact preference is through the update contacts endpoint.
+Update the preference that indicates whether or not a contact accepts to be contacted via sms. This will also approve an unapproved contact. The primary way of updating a contact preference is through the update contacts endpoint.
 
 - HTTP Method: `POST`
 - Endpoint: `/api/v2/contacts/{contactId}/preferences/acceptsSms`
@@ -964,7 +876,7 @@ import { ApiAdjustRewardPoints, VoyadoEngage } from 'voyado_engage';
   const input: ApiAdjustRewardPoints = {
     points: 1.86,
     description: 'description',
-    type_: 'type',
+    type: 'type',
   };
 
   const { data } = await voyadoEngage.contacts.bonusPointTransactionsAdjustRewardPoints('contactId', input);
@@ -975,9 +887,7 @@ import { ApiAdjustRewardPoints, VoyadoEngage } from 'voyado_engage';
 
 ## ContactPreferences_AcceptsEmail
 
-Update the preference that indicates whether or not
-&nbsp;a contact accepts to be contacted via email. This will also approve an unapproved contact.
-&nbsp;The primary way of updating a contact preference is through the update contacts endpoint.
+Update the preference that indicates whether or not a contact accepts to be contacted via email. This will also approve an unapproved contact. The primary way of updating a contact preference is through the update contacts endpoint.
 
 - HTTP Method: `POST`
 - Endpoint: `/api/v2/contacts/{contactId}/preferences/acceptsEmail`
@@ -1015,9 +925,7 @@ import { BoolRequest, VoyadoEngage } from 'voyado_engage';
 
 ## ContactPreferences_AcceptsPostal
 
-Update the preference that indicates whether or not
-&nbsp;a contact accepts to be contacted via regular mail. This will also approve an unapproved contact.
-&nbsp;The primary way of updating a contact preference is through the update contacts endpoint.
+Update the preference that indicates whether or not a contact accepts to be contacted via regular mail. This will also approve an unapproved contact. The primary way of updating a contact preference is through the update contacts endpoint.
 
 - HTTP Method: `POST`
 - Endpoint: `/api/v2/contacts/{contactId}/preferences/acceptsPostal`
@@ -1055,8 +963,7 @@ import { BoolRequest, VoyadoEngage } from 'voyado_engage';
 
 ## AssignPromotion_Assign
 
-Assign a promotion (multichannel offer only) to a Contact using the internal Contact Id
-&nbsp;and the id of the promotion
+Assign a promotion (multichannel offer only) to a Contact using the internal Contact Id and the id of the promotion
 
 - HTTP Method: `POST`
 - Endpoint: `/api/v2/contacts/{contactId}/promotions/{promotionId}/assign`
@@ -1090,9 +997,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## OfferPromotions_Redeem
 
-Redeem a promotion (multichannel offer or mobile swipe) for a Contact using the internal Contact Id
-&nbsp;
-&nbsp;Redemption channel can be POS, ECOM or OTHER.
+Redeem a promotion (multichannel offer or mobile swipe) for a Contact using the internal Contact Id Redemption channel can be POS, ECOM or OTHER.
 
 - HTTP Method: `POST`
 - Endpoint: `/api/v2/contacts/{contactId}/promotions/{promotionId}/redeem`
@@ -1228,5 +1133,3 @@ import { VoyadoEngage } from 'voyado_engage';
   console.log(data);
 })();
 ```
-
-<!-- This file was generated by liblab | https://liblab.com/ -->

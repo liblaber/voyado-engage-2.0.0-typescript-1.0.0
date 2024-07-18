@@ -1,0 +1,53 @@
+import { z } from 'zod';
+
+/**
+ * The shape of the model inside the application code - what the users use
+ */
+export const interactionCreateResponseSelf: any = z.lazy(() => {
+  return z.object({
+    contactId: z.string().optional(),
+    href: z.string().optional(),
+    created: z.string().optional(),
+  });
+});
+
+/**
+ *
+ * @typedef  {InteractionCreateResponseSelf} interactionCreateResponseSelf
+ * @property {string}
+ * @property {string}
+ * @property {string}
+ */
+export type InteractionCreateResponseSelf = z.infer<typeof interactionCreateResponseSelf>;
+
+/**
+ * The shape of the model mapping from the api schema into the application shape.
+ * Is equal to application shape if all property names match the api schema
+ */
+export const interactionCreateResponseSelfResponse: any = z.lazy(() => {
+  return z
+    .object({
+      contactId: z.string().optional(),
+      href: z.string().optional(),
+      created: z.string().optional(),
+    })
+    .transform((data) => ({
+      contactId: data['contactId'],
+      href: data['href'],
+      created: data['created'],
+    }));
+});
+
+/**
+ * The shape of the model mapping from the application shape into the api schema.
+ * Is equal to application shape if all property names match the api schema
+ */
+export const interactionCreateResponseSelfRequest: any = z.lazy(() => {
+  return z
+    .object({ contactId: z.string().nullish(), href: z.string().nullish(), created: z.string().nullish() })
+    .transform((data) => ({
+      contactId: data['contactId'],
+      href: data['href'],
+      created: data['created'],
+    }));
+});
