@@ -7,7 +7,7 @@
 | id                 | string                               | ❌       |             |
 | promotionId        | string                               | ❌       |             |
 | externalId         | string                               | ❌       |             |
-| type\_             | string                               | ❌       |             |
+| type               | string                               | ❌       |             |
 | name               | string                               | ❌       |             |
 | expiresOn          | string                               | ❌       |             |
 | heading            | string                               | ❌       |             |

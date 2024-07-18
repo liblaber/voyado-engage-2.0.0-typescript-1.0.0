@@ -4,28 +4,26 @@ import { z } from 'zod';
 import { BaseService } from '../base-service';
 import { ContentType, HttpResponse } from '../../http';
 import { RequestConfig } from '../../http/types';
-import {
-  PointAccountModel,
-  PointAccountModelsResult,
-  PointDefinitionModel,
-  PointTransactionModel,
-  PointTransactionModelsResult,
-  PointTransactionToAccount,
-  PointTransactionToAccountResultModel,
-  pointAccountModelResponse,
-  pointAccountModelsResultResponse,
-  pointDefinitionModelResponse,
-  pointTransactionModelResponse,
-  pointTransactionModelsResultResponse,
-  pointTransactionToAccountRequest,
-  pointTransactionToAccountResultModelResponse,
-} from '../common';
+import { Request } from '../../http/transport/request';
+import { PointAccountModel, pointAccountModelResponse } from './models/point-account-model';
+import { PointDefinitionModel, pointDefinitionModelResponse } from './models/point-definition-model';
+import { PointTransactionModel, pointTransactionModelResponse } from './models/point-transaction-model';
 import {
   PointAccountAddPointTransactionsParams,
   PointAccountPointAccountGet2Params,
   PointAccountPointDefinitionsParams,
   PointAccountPointTransactions2Params,
 } from './request-params';
+import { PointAccountModelsResult, pointAccountModelsResultResponse } from './models/point-account-models-result';
+import {
+  PointTransactionModelsResult,
+  pointTransactionModelsResultResponse,
+} from './models/point-transaction-models-result';
+import { PointTransactionToAccount, pointTransactionToAccountRequest } from './models/point-transaction-to-account';
+import {
+  PointTransactionToAccountResultModel,
+  pointTransactionToAccountResultModelResponse,
+} from './models/point-transaction-to-account-result-model';
 
 export class PointAccountsService extends BaseService {
   /**
@@ -37,17 +35,18 @@ export class PointAccountsService extends BaseService {
     id: number,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<PointAccountModel>> {
-    const path = this.client.buildPath('/api/v2/point-accounts/{id}', { id: id });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/point-accounts/{id}',
+      config: this.config,
       responseSchema: pointAccountModelResponse,
       requestSchema: z.any(),
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('id', id);
+    return this.client.call(request);
   }
 
   /**
@@ -61,17 +60,18 @@ Gets the name, id and description for each pointDefinition
     id: number,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<PointDefinitionModel>> {
-    const path = this.client.buildPath('/api/v2/point-accounts/definitions/{id}', { id: id });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/point-accounts/definitions/{id}',
+      config: this.config,
       responseSchema: pointDefinitionModelResponse,
       requestSchema: z.any(),
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('id', id);
+    return this.client.call(request);
   }
 
   /**
@@ -83,17 +83,18 @@ Gets the name, id and description for each pointDefinition
     id: number,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<PointTransactionModel>> {
-    const path = this.client.buildPath('/api/v2/point-accounts/transactions/{id}', { id: id });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/point-accounts/transactions/{id}',
+      config: this.config,
       responseSchema: pointTransactionModelResponse,
       requestSchema: z.any(),
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('id', id);
+    return this.client.call(request);
   }
 
   /**
@@ -106,24 +107,19 @@ Gets the name, id and description for each pointDefinition
     params?: PointAccountPointDefinitionsParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<PointDefinitionModel[]>> {
-    const path = '/api/v2/point-accounts/definitions';
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/point-accounts/definitions',
+      config: this.config,
       responseSchema: z.array(pointDefinitionModelResponse),
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.offset) {
-      options.queryParams['offset'] = params?.offset;
-    }
-    if (params?.count) {
-      options.queryParams['count'] = params?.count;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addQueryParam('offset', params?.offset);
+    request.addQueryParam('count', params?.count);
+    return this.client.call(request);
   }
 
   /**
@@ -137,27 +133,20 @@ Gets the name, id and description for each pointDefinition
     params: PointAccountPointAccountGet2Params,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<PointAccountModelsResult>> {
-    const path = '/api/v2/point-accounts';
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/point-accounts',
+      config: this.config,
       responseSchema: pointAccountModelsResultResponse,
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.contactId) {
-      options.queryParams['contactId'] = params?.contactId;
-    }
-    if (params?.offset) {
-      options.queryParams['offset'] = params?.offset;
-    }
-    if (params?.count) {
-      options.queryParams['count'] = params?.count;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addQueryParam('contactId', params?.contactId);
+    request.addQueryParam('offset', params?.offset);
+    request.addQueryParam('count', params?.count);
+    return this.client.call(request);
   }
 
   /**
@@ -180,36 +169,23 @@ All parameters are added to the query string.
     params?: PointAccountPointTransactions2Params,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<PointTransactionModelsResult>> {
-    const path = '/api/v2/point-accounts/transactions';
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/point-accounts/transactions',
+      config: this.config,
       responseSchema: pointTransactionModelsResultResponse,
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.contactId) {
-      options.queryParams['contactId'] = params?.contactId;
-    }
-    if (params?.definitionId) {
-      options.queryParams['definitionId'] = params?.definitionId;
-    }
-    if (params?.accountId) {
-      options.queryParams['accountId'] = params?.accountId;
-    }
-    if (params?.offset) {
-      options.queryParams['offset'] = params?.offset;
-    }
-    if (params?.count) {
-      options.queryParams['count'] = params?.count;
-    }
-    if (params?.filter) {
-      options.queryParams['filter'] = params?.filter;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addQueryParam('contactId', params?.contactId);
+    request.addQueryParam('definitionId', params?.definitionId);
+    request.addQueryParam('accountId', params?.accountId);
+    request.addQueryParam('offset', params?.offset);
+    request.addQueryParam('count', params?.count);
+    request.addQueryParam('filter', params?.filter);
+    return this.client.call(request);
   }
 
   /**
@@ -241,22 +217,19 @@ The primary purpose of the idempotency key is to enable safe retries of requests
     params?: PointAccountAddPointTransactionsParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<PointTransactionToAccountResultModel>> {
-    const path = '/api/v2/point-accounts/transactions';
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/api/v2/point-accounts/transactions',
+      config: this.config,
       responseSchema: pointTransactionToAccountResultModelResponse,
       requestSchema: z.any(),
-      body: body as any,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.idempotencyKey) {
-      options.headers['Idempotency-Key'] = params?.idempotencyKey;
-    }
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addHeaderParam('Idempotency-Key', params?.idempotencyKey);
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 }

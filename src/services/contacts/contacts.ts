@@ -4,30 +4,8 @@ import { z } from 'zod';
 import { BaseService } from '../base-service';
 import { ContentType, HttpResponse } from '../../http';
 import { RequestConfig } from '../../http/types';
-import {
-  ApiAdjustRewardPointsResponse1,
-  ApiPromotionModel,
-  BoolRequest,
-  IApiContact,
-  ListResultOfApiMessage,
-  PagedResultOfApiMessage,
-  PagedResultOfBonusPointTransactionModel,
-  PagedResultOfTransactionItem,
-  ProductRecommendationsModel,
-  PurchaseHistorySummary,
-  RedeemBodyModel,
-  apiAdjustRewardPointsResponse1Response,
-  apiPromotionModelResponse,
-  boolRequestRequest,
-  iApiContactResponse,
-  listResultOfApiMessageResponse,
-  pagedResultOfApiMessageResponse,
-  pagedResultOfBonusPointTransactionModelResponse,
-  pagedResultOfTransactionItemResponse,
-  productRecommendationsModelResponse,
-  purchaseHistorySummaryResponse,
-  redeemBodyModelRequest,
-} from '../common';
+import { Request } from '../../http/transport/request';
+import { IApiContact, iApiContactResponse } from './models/i-api-contact';
 import {
   BonusPointTransactionsGetBonusPointTransactionsForContactParams,
   ContactBulkCreateContactsInBulkParams,
@@ -47,7 +25,29 @@ import {
   OfferPromotionsGetPromotionsForContactParams,
   TransactionsGetTransactionsByContactIdParams,
 } from './request-params';
-import { ApiAdjustRewardPoints, apiAdjustRewardPointsRequest } from './models';
+import {
+  ProductRecommendationsModel,
+  productRecommendationsModelResponse,
+} from './models/product-recommendations-model';
+import { PurchaseHistorySummary, purchaseHistorySummaryResponse } from './models/purchase-history-summary';
+import { ListResultOfApiMessage, listResultOfApiMessageResponse } from './models/list-result-of-api-message';
+import { PagedResultOfApiMessage, pagedResultOfApiMessageResponse } from './models/paged-result-of-api-message';
+import {
+  PagedResultOfTransactionItem,
+  pagedResultOfTransactionItemResponse,
+} from './models/paged-result-of-transaction-item';
+import {
+  PagedResultOfBonusPointTransactionModel,
+  pagedResultOfBonusPointTransactionModelResponse,
+} from './models/paged-result-of-bonus-point-transaction-model';
+import { ApiPromotionModel, apiPromotionModelResponse } from './models/api-promotion-model';
+import { BoolRequest, boolRequestRequest } from './models/bool-request';
+import { ApiAdjustRewardPoints, apiAdjustRewardPointsRequest } from './models/api-adjust-reward-points';
+import {
+  ApiAdjustRewardPointsResponse1,
+  apiAdjustRewardPointsResponse1Response,
+} from './models/api-adjust-reward-points-response-1';
+import { RedeemBodyModel, redeemBodyModelRequest } from '../common/redeem-body-model';
 
 export class ContactsService extends BaseService {
   /**
@@ -58,17 +58,17 @@ set frequency (normally once every 20 min).
  * @returns {Promise<HttpResponse<number>>} OK
  */
   async contactsVCount(requestConfig?: RequestConfig): Promise<HttpResponse<number>> {
-    const path = '/api/v2/contacts/count';
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/count',
+      config: this.config,
       responseSchema: z.number(),
       requestSchema: z.any(),
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    return this.client.call(request);
   }
 
   /**
@@ -80,17 +80,18 @@ the current instance configuration.
  * @returns {Promise<HttpResponse<IApiContact>>} OK
  */
   async contactsVGetContactById(contactId: string, requestConfig?: RequestConfig): Promise<HttpResponse<IApiContact>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactId}',
+      config: this.config,
       responseSchema: iApiContactResponse,
       requestSchema: z.any(),
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    return this.client.call(request);
   }
 
   /**
@@ -104,20 +105,20 @@ Dont send an empty value unless you want it to be empty.
     body: any,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<IApiContact>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/api/v2/contacts/{contactId}',
+      config: this.config,
       responseSchema: iApiContactResponse,
       requestSchema: z.any(),
-      body: body as any,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 
   /**
@@ -131,20 +132,19 @@ Dont send an empty value unless you want it to be empty.
     params?: ContactsVDeleteWithHeaderParamParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<any>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'DELETE',
+      path: '/api/v2/contacts/{contactId}',
+      config: this.config,
       responseSchema: z.any(),
       requestSchema: z.any(),
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.source) {
-      options.headers['source'] = params?.source;
-    }
-    return this.client.delete(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addHeaderParam('source', params?.source);
+    return this.client.call(request);
   }
 
   /**
@@ -156,17 +156,18 @@ set frequency (normally once every 20 min).
  * @returns {Promise<HttpResponse<number>>} OK
  */
   async contactsVCountByContactType(contactType: string, requestConfig?: RequestConfig): Promise<HttpResponse<number>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactType}/count', { contactType: contactType });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactType}/count',
+      config: this.config,
       responseSchema: z.number(),
       requestSchema: z.any(),
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactType', contactType);
+    return this.client.call(request);
   }
 
   /**
@@ -178,21 +179,18 @@ set frequency (normally once every 20 min).
     params: ContactBulkGetBulkStatusParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<any>> {
-    const path = '/api/v2/contacts/bulk/status';
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/bulk/status',
+      config: this.config,
       responseSchema: z.any(),
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.batchId) {
-      options.queryParams['batchId'] = params?.batchId;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addQueryParam('batchId', params?.batchId);
+    return this.client.call(request);
   }
 
   /**
@@ -215,20 +213,19 @@ the current configuration.
     keyValue: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<IApiContact>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactType}/bykey/{keyValue}', {
-      contactType: contactType,
-      keyValue: keyValue,
-    });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactType}/bykey/{keyValue}',
+      config: this.config,
       responseSchema: iApiContactResponse,
       requestSchema: z.any(),
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactType', contactType);
+    request.addPathParam('keyValue', keyValue);
+    return this.client.call(request);
   }
 
   /**
@@ -240,17 +237,18 @@ the current configuration.
     contactId: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ProductRecommendationsModel>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/productrecommendations', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactId}/productrecommendations',
+      config: this.config,
       responseSchema: productRecommendationsModelResponse,
       requestSchema: z.any(),
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    return this.client.call(request);
   }
 
   /**
@@ -262,17 +260,18 @@ the current configuration.
     contactId: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<PurchaseHistorySummary>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/purchasehistorysummary', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactId}/purchasehistorysummary',
+      config: this.config,
       responseSchema: purchaseHistorySummaryResponse,
       requestSchema: z.any(),
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    return this.client.call(request);
   }
 
   /**
@@ -284,19 +283,18 @@ the current configuration.
     contactId: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/backinstock/subscriptions', {
-      contactId: contactId,
-    });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactId}/backinstock/subscriptions',
+      config: this.config,
       responseSchema: z.undefined(),
       requestSchema: z.any(),
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    return this.client.call(request);
   }
 
   /**
@@ -314,20 +312,19 @@ the current configuration.
     externalId: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<IApiContact>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactType}/byexternalid/{externalId}', {
-      contactType: contactType,
-      externalId: externalId,
-    });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactType}/byexternalid/{externalId}',
+      config: this.config,
       responseSchema: iApiContactResponse,
       requestSchema: z.any(),
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactType', contactType);
+    request.addPathParam('externalId', externalId);
+    return this.client.call(request);
   }
 
   /**
@@ -346,21 +343,19 @@ the current configuration.
     params: ContactsVGetContactByTypeAndKeyValueAsyncParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<IApiContact>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactType}/bykey', { contactType: contactType });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactType}/bykey',
+      config: this.config,
       responseSchema: iApiContactResponse,
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.keyValue) {
-      options.queryParams['keyValue'] = params?.keyValue;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactType', contactType);
+    request.addQueryParam('keyValue', params?.keyValue);
+    return this.client.call(request);
   }
 
   /**
@@ -374,21 +369,19 @@ the current configuration.
     params?: ContactMessageGetLatestMessagesByContactIdParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ListResultOfApiMessage>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/messages/latest', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactId}/messages/latest',
+      config: this.config,
       responseSchema: listResultOfApiMessageResponse,
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.count) {
-      options.queryParams['count'] = params?.count;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addQueryParam('count', params?.count);
+    return this.client.call(request);
   }
 
   /**
@@ -403,24 +396,20 @@ the current configuration.
     params?: ContactMessageGetMessagesByContactIdParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<PagedResultOfApiMessage>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/messages', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactId}/messages',
+      config: this.config,
       responseSchema: pagedResultOfApiMessageResponse,
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.offset) {
-      options.queryParams['offset'] = params?.offset;
-    }
-    if (params?.count) {
-      options.queryParams['count'] = params?.count;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addQueryParam('offset', params?.offset);
+    request.addQueryParam('count', params?.count);
+    return this.client.call(request);
   }
 
   /**
@@ -436,24 +425,20 @@ optional offset and number of transactions in response.
     params?: TransactionsGetTransactionsByContactIdParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<PagedResultOfTransactionItem>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/transactions', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactId}/transactions',
+      config: this.config,
       responseSchema: pagedResultOfTransactionItemResponse,
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.offset) {
-      options.queryParams['offset'] = params?.offset;
-    }
-    if (params?.count) {
-      options.queryParams['count'] = params?.count;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addQueryParam('offset', params?.offset);
+    request.addQueryParam('count', params?.count);
+    return this.client.call(request);
   }
 
   /**
@@ -468,24 +453,20 @@ optional offset and number of transactions in response.
     params?: BonusPointTransactionsGetBonusPointTransactionsForContactParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<PagedResultOfBonusPointTransactionModel>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/bonuspointtransactions', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactId}/bonuspointtransactions',
+      config: this.config,
       responseSchema: pagedResultOfBonusPointTransactionModelResponse,
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.offset) {
-      options.queryParams['offset'] = params?.offset;
-    }
-    if (params?.count) {
-      options.queryParams['count'] = params?.count;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addQueryParam('offset', params?.offset);
+    request.addQueryParam('count', params?.count);
+    return this.client.call(request);
   }
 
   /**
@@ -499,27 +480,20 @@ optional offset and number of transactions in response.
     params: ContactsVGetChangedContactIdsParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<any>> {
-    const path = '/api/v2/contacts/changes';
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/changes',
+      config: this.config,
       responseSchema: z.any(),
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.changeType) {
-      options.queryParams['changeType'] = params?.changeType;
-    }
-    if (params?.fromDate) {
-      options.queryParams['fromDate'] = params?.fromDate;
-    }
-    if (params?.toDate) {
-      options.queryParams['toDate'] = params?.toDate;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addQueryParam('changeType', params?.changeType);
+    request.addQueryParam('fromDate', params?.fromDate);
+    request.addQueryParam('toDate', params?.toDate);
+    return this.client.call(request);
   }
 
   /**
@@ -535,21 +509,19 @@ It can be POS, ECOM or OTHER
     params?: OfferPromotionsGetPromotionsForContactParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ApiPromotionModel[]>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/promotions', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactId}/promotions',
+      config: this.config,
       responseSchema: z.array(apiPromotionModelResponse),
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.redemptionChannelType) {
-      options.queryParams['redemptionChannelType'] = params?.redemptionChannelType;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addQueryParam('redemptionChannelType', params?.redemptionChannelType);
+    return this.client.call(request);
   }
 
   /**
@@ -564,43 +536,30 @@ It can be POS, ECOM or OTHER
  * @param {string} [socialSecurityNumber] - 
  * @param {string} [mobilePhone] - 
  * @param {string} [customKey] - 
- * @param {string} [any_] - 
+ * @param {string} [any] - 
  * @returns {Promise<HttpResponse<string>>} OK
  */
   async contactOverviewGetContactIdAsync(
     params?: ContactOverviewGetContactIdAsyncParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<string>> {
-    const path = '/api/v2/contacts/id';
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/id',
+      config: this.config,
       responseSchema: z.string(),
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.contactType) {
-      options.queryParams['contactType'] = params?.contactType;
-    }
-    if (params?.email) {
-      options.queryParams['email'] = params?.email;
-    }
-    if (params?.socialSecurityNumber) {
-      options.queryParams['socialSecurityNumber'] = params?.socialSecurityNumber;
-    }
-    if (params?.mobilePhone) {
-      options.queryParams['mobilePhone'] = params?.mobilePhone;
-    }
-    if (params?.customKey) {
-      options.queryParams['customKey'] = params?.customKey;
-    }
-    if (params?.any_) {
-      options.queryParams['any'] = params?.any_;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addQueryParam('contactType', params?.contactType);
+    request.addQueryParam('email', params?.email);
+    request.addQueryParam('socialSecurityNumber', params?.socialSecurityNumber);
+    request.addQueryParam('mobilePhone', params?.mobilePhone);
+    request.addQueryParam('customKey', params?.customKey);
+    request.addQueryParam('any', params?.any);
+    return this.client.call(request);
   }
 
   /**
@@ -617,29 +576,22 @@ If the contacts key identifier (example: Email) already exists : returns the GUI
     params?: ContactsVCreateContactHeaderParamParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<IApiContact>> {
-    const path = '/api/v2/contacts';
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/api/v2/contacts',
+      config: this.config,
       responseSchema: iApiContactResponse,
       requestSchema: z.any(),
-      body: body as any,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.source) {
-      options.headers['source'] = params?.source;
-    }
-    if (params?.storeExternalId) {
-      options.headers['storeExternalId'] = params?.storeExternalId;
-    }
-    if (params?.createAsUnapproved) {
-      options.headers['createAsUnapproved'] = params?.createAsUnapproved;
-    }
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addHeaderParam('source', params?.source);
+    request.addHeaderParam('storeExternalId', params?.storeExternalId);
+    request.addHeaderParam('createAsUnapproved', params?.createAsUnapproved);
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 
   /**
@@ -654,23 +606,21 @@ If the contacts key identifier (example: Email) already exists : returns the GUI
     params?: ContactsVPromoteToMemberParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<IApiContact>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/promoteToMember', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/api/v2/contacts/{contactId}/promoteToMember',
+      config: this.config,
       responseSchema: iApiContactResponse,
       requestSchema: z.any(),
-      body: body as any,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.source) {
-      options.headers['source'] = params?.source;
-    }
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addHeaderParam('source', params?.source);
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 
   /**
@@ -683,24 +633,20 @@ If the contacts key identifier (example: Email) already exists : returns the GUI
     params?: ContactBulkCreateContactsInBulkParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<string>> {
-    const path = '/api/v2/contacts/bulk';
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/api/v2/contacts/bulk',
+      config: this.config,
       responseSchema: z.string(),
       requestSchema: z.any(),
-      body: body as any,
-      queryParams: {},
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.contactType) {
-      options.queryParams['contactType'] = params?.contactType;
-    }
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addQueryParam('contactType', params?.contactType);
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 
   /**
@@ -714,27 +660,21 @@ If the contacts key identifier (example: Email) already exists : returns the GUI
     params?: ContactBulkUpdateContactsInBulkParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<string>> {
-    const path = '/api/v2/contacts/bulk';
-    const options: any = {
+    const request = new Request({
+      method: 'PATCH',
+      body,
+      path: '/api/v2/contacts/bulk',
+      config: this.config,
       responseSchema: z.string(),
       requestSchema: z.any(),
-      body: body as any,
-      queryParams: {},
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.contactType) {
-      options.queryParams['contactType'] = params?.contactType;
-    }
-    if (params?.avoidTriggeringExport) {
-      options.queryParams['avoidTriggeringExport'] = params?.avoidTriggeringExport;
-    }
-    return this.client.patch(path, options);
+      requestConfig,
+    });
+    request.addQueryParam('contactType', params?.contactType);
+    request.addQueryParam('avoidTriggeringExport', params?.avoidTriggeringExport);
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 
   /**
@@ -749,20 +689,20 @@ The primary way of updating a contact preference is through the update contacts 
     body: BoolRequest,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<IApiContact>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/preferences/acceptsSms', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/api/v2/contacts/{contactId}/preferences/acceptsSms',
+      config: this.config,
       responseSchema: iApiContactResponse,
       requestSchema: boolRequestRequest,
-      body: body as any,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 
   /**
@@ -775,20 +715,20 @@ The primary way of updating a contact preference is through the update contacts 
     body: ApiAdjustRewardPoints,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ApiAdjustRewardPointsResponse1>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/rewardpointtransaction', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/api/v2/contacts/{contactId}/rewardpointtransaction',
+      config: this.config,
       responseSchema: apiAdjustRewardPointsResponse1Response,
       requestSchema: apiAdjustRewardPointsRequest,
-      body: body as any,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 
   /**
@@ -803,22 +743,20 @@ The primary way of updating a contact preference is through the update contacts 
     body: BoolRequest,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<IApiContact>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/preferences/acceptsEmail', {
-      contactId: contactId,
-    });
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/api/v2/contacts/{contactId}/preferences/acceptsEmail',
+      config: this.config,
       responseSchema: iApiContactResponse,
       requestSchema: boolRequestRequest,
-      body: body as any,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 
   /**
@@ -833,22 +771,20 @@ The primary way of updating a contact preference is through the update contacts 
     body: BoolRequest,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<IApiContact>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/preferences/acceptsPostal', {
-      contactId: contactId,
-    });
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/api/v2/contacts/{contactId}/preferences/acceptsPostal',
+      config: this.config,
       responseSchema: iApiContactResponse,
       requestSchema: boolRequestRequest,
-      body: body as any,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 
   /**
@@ -863,20 +799,19 @@ and the id of the promotion
     promotionId: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<any>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/promotions/{promotionId}/assign', {
-      contactId: contactId,
-      promotionId: promotionId,
-    });
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      path: '/api/v2/contacts/{contactId}/promotions/{promotionId}/assign',
+      config: this.config,
       responseSchema: z.any(),
       requestSchema: z.any(),
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addPathParam('promotionId', promotionId);
+    return this.client.call(request);
   }
 
   /**
@@ -893,23 +828,21 @@ Redemption channel can be POS, ECOM or OTHER.
     body: RedeemBodyModel,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<any>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/promotions/{promotionId}/redeem', {
-      contactId: contactId,
-      promotionId: promotionId,
-    });
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/api/v2/contacts/{contactId}/promotions/{promotionId}/redeem',
+      config: this.config,
       responseSchema: z.any(),
       requestSchema: redeemBodyModelRequest,
-      body: body as any,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addPathParam('promotionId', promotionId);
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 
   /**
@@ -923,21 +856,19 @@ Redemption channel can be POS, ECOM or OTHER.
     params?: ContactMessageSmsUnsubscribeContactParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<any>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/unsubscribeSms', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      path: '/api/v2/contacts/{contactId}/unsubscribeSms',
+      config: this.config,
       responseSchema: z.any(),
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.messageId) {
-      options.queryParams['messageId'] = params?.messageId;
-    }
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addQueryParam('messageId', params?.messageId);
+    return this.client.call(request);
   }
 
   /**
@@ -951,21 +882,19 @@ Redemption channel can be POS, ECOM or OTHER.
     params?: ContactMessageEmailUnsubscribeContactParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/unsubscribeEmail', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      path: '/api/v2/contacts/{contactId}/unsubscribeEmail',
+      config: this.config,
       responseSchema: z.undefined(),
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.messageId) {
-      options.queryParams['messageId'] = params?.messageId;
-    }
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addQueryParam('messageId', params?.messageId);
+    return this.client.call(request);
   }
 
   /**
@@ -979,20 +908,18 @@ Redemption channel can be POS, ECOM or OTHER.
     params: ContactsVUpdateContactTypeParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/updateContactType', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      path: '/api/v2/contacts/{contactId}/updateContactType',
+      config: this.config,
       responseSchema: z.undefined(),
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.contactTypeId) {
-      options.queryParams['contactTypeId'] = params?.contactTypeId;
-    }
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addQueryParam('contactTypeId', params?.contactTypeId);
+    return this.client.call(request);
   }
 }

@@ -2,22 +2,15 @@
 
 **Properties**
 
-| Name                                                                                             | Type                             | Required | Description                                                               |
-| :----------------------------------------------------------------------------------------------- | :------------------------------- | :------- | :------------------------------------------------------------------------ |
-| id                                                                                               | string                           | ✅       | Internal Id in Voyado                                                     |
-| name                                                                                             | string                           | ✅       | Name of promtion.                                                         |
-| &nbsp;Following field is required and don't allows to be left out or set to null or empty string |
-| status                                                                                           | MultichannelPromotionModelStatus | ❌       | Current status of the promotion                                           |
-| externalId                                                                                       | string                           | ❌       | External id generated from system outside of Voyado                       |
-| validity                                                                                         | PromotionValidityModel           | ❌       | Following class holds the duration information for a promotion.           |
-| &nbsp;The this object uses to set and get the duration of a promotion.                           |
-| presentation                                                                                     | PromotionBasicPresentationModel  | ❌       | Following object is for get/set the presentational side of the promotion. |
-
-&nbsp;This data uses to displey in different kind of views, for an example in Email messages etc.
-&nbsp;
-&nbsp;This fields populates the "Presentation" section in the admin UI. |
-| redemptionChannels | MultichannelPromotionRedemptionChannelModel[] | ❌ | Redemption channels
-&nbsp;Valid channels: POS, ECOM and OTHER |
+| Name               | Type                                          | Required | Description                                                                                                                                                                                                                             |
+| :----------------- | :-------------------------------------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id                 | string                                        | ✅       | Internal Id in Voyado                                                                                                                                                                                                                   |
+| name               | string                                        | ✅       | Name of promtion. Following field is required and don't allows to be left out or set to null or empty string                                                                                                                            |
+| status             | MultichannelPromotionModelStatus              | ❌       | Current status of the promotion                                                                                                                                                                                                         |
+| externalId         | string                                        | ❌       | External id generated from system outside of Voyado                                                                                                                                                                                     |
+| validity           | PromotionValidityModel                        | ❌       | Following class holds the duration information for a promotion. The this object uses to set and get the duration of a promotion.                                                                                                        |
+| presentation       | PromotionBasicPresentationModel               | ❌       | Following object is for get/set the presentational side of the promotion. This data uses to displey in different kind of views, for an example in Email messages etc. This fields populates the "Presentation" section in the admin UI. |
+| redemptionChannels | MultichannelPromotionRedemptionChannelModel[] | ❌       | Redemption channels Valid channels: POS, ECOM and OTHER                                                                                                                                                                                 |
 
 # MultichannelPromotionModelStatus
 

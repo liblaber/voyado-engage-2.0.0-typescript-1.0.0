@@ -4,21 +4,25 @@ import { z } from 'zod';
 import { BaseService } from '../base-service';
 import { ContentType, HttpResponse } from '../../http';
 import { RequestConfig } from '../../http/types';
+import { Request } from '../../http/transport/request';
 import {
   PagedResultOfAllBonusCheckModel,
-  PagedResultOfAvailableBonusCheckModel,
-  PagedResultOfRedeemedBonusCheckModel,
-  RedeemedBonusCheckModel,
   pagedResultOfAllBonusCheckModelResponse,
-  pagedResultOfAvailableBonusCheckModelResponse,
-  pagedResultOfRedeemedBonusCheckModelResponse,
-  redeemedBonusCheckModelResponse,
-} from '../common';
+} from './models/paged-result-of-all-bonus-check-model';
 import {
   BonusChecksGetAvailableBonusChecksParams,
   BonusChecksGetBonusChecksForContactParams,
   BonusChecksGetRedeemedBonusChecksForContactParams,
 } from './request-params';
+import {
+  PagedResultOfRedeemedBonusCheckModel,
+  pagedResultOfRedeemedBonusCheckModelResponse,
+} from './models/paged-result-of-redeemed-bonus-check-model';
+import {
+  PagedResultOfAvailableBonusCheckModel,
+  pagedResultOfAvailableBonusCheckModelResponse,
+} from './models/paged-result-of-available-bonus-check-model';
+import { RedeemedBonusCheckModel, redeemedBonusCheckModelResponse } from './models/redeemed-bonus-check-model';
 
 export class BonuschecksService extends BaseService {
   /**
@@ -35,24 +39,20 @@ count query parameters.
     params?: BonusChecksGetBonusChecksForContactParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<PagedResultOfAllBonusCheckModel>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/bonuschecks', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactId}/bonuschecks',
+      config: this.config,
       responseSchema: pagedResultOfAllBonusCheckModelResponse,
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.offset) {
-      options.queryParams['offset'] = params?.offset;
-    }
-    if (params?.count) {
-      options.queryParams['count'] = params?.count;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addQueryParam('offset', params?.offset);
+    request.addQueryParam('count', params?.count);
+    return this.client.call(request);
   }
 
   /**
@@ -69,24 +69,20 @@ count query parameters.
     params?: BonusChecksGetRedeemedBonusChecksForContactParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<PagedResultOfRedeemedBonusCheckModel>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/bonuschecks/redeemed', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactId}/bonuschecks/redeemed',
+      config: this.config,
       responseSchema: pagedResultOfRedeemedBonusCheckModelResponse,
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.offset) {
-      options.queryParams['offset'] = params?.offset;
-    }
-    if (params?.count) {
-      options.queryParams['count'] = params?.count;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addQueryParam('offset', params?.offset);
+    request.addQueryParam('count', params?.count);
+    return this.client.call(request);
   }
 
   /**
@@ -106,24 +102,20 @@ and *count* query parameters.
     params?: BonusChecksGetAvailableBonusChecksParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<PagedResultOfAvailableBonusCheckModel>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/bonuschecks/available', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactId}/bonuschecks/available',
+      config: this.config,
       responseSchema: pagedResultOfAvailableBonusCheckModelResponse,
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.offset) {
-      options.queryParams['offset'] = params?.offset;
-    }
-    if (params?.count) {
-      options.queryParams['count'] = params?.count;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addQueryParam('offset', params?.offset);
+    request.addQueryParam('count', params?.count);
+    return this.client.call(request);
   }
 
   /**
@@ -137,19 +129,18 @@ and *count* query parameters.
     bonusCheckId: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<RedeemedBonusCheckModel>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/bonuschecks/{bonusCheckId}/redeem', {
-      contactId: contactId,
-      bonusCheckId: bonusCheckId,
-    });
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      path: '/api/v2/contacts/{contactId}/bonuschecks/{bonusCheckId}/redeem',
+      config: this.config,
       responseSchema: redeemedBonusCheckModelResponse,
       requestSchema: z.any(),
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addPathParam('bonusCheckId', bonusCheckId);
+    return this.client.call(request);
   }
 }

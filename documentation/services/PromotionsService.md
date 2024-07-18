@@ -2,24 +2,19 @@
 
 A list of all methods in the `PromotionsService` service. Click on the method name to view detailed information about that method.
 
-| Methods                                                                                           | Description                                                                                            |
-| :------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------------------------------------------- |
-| [MultichannelPromotions_GetById](#multichannelpromotions_getbyid)                                 | Gets the multichannel promotion with the identifier which is set by Voyado                             |
-| [MultichannelPromotions_Update](#multichannelpromotions_update)                                   | Updates an existing multichannel promotion.                                                            |
-| &nbsp;Only multichannel promotion in status 'Draft' can be updated.                               |
-| [MultichannelPromotions_DeleteById](#multichannelpromotions_deletebyid)                           | Only unassigned multichannel promotions can be deleted                                                 |
-| [MultichannelPromotions_GetValidityById](#multichannelpromotions_getvaliditybyid)                 | Gets the multichannel promotion with the identifier which is an internal reference for Voyado          |
-| [MultichannelPromotions_UpdateValidity](#multichannelpromotions_updatevalidity)                   | Updates duration of an existing multichannel promotion.                                                |
-| &nbsp;Only multichannel promotion in status 'Draft' can be updated.                               |
-| [MultichannelPromotions_GetByExternalId](#multichannelpromotions_getbyexternalid)                 | Gets the multichannel promotion with the identifier which is an external reference for Voyado          |
-| [MultichannelPromotions_Create](#multichannelpromotions_create)                                   | Only creates multichannel promotion in status 'Draft'.                                                 |
-| [MultichannelPromotions_DeleteByExternalId](#multichannelpromotions_deletebyexternalid)           | Only unassigned multichannel promotions can be deleted                                                 |
-| [MultichannelPromotions_GetByValidityExternalId](#multichannelpromotions_getbyvalidityexternalid) | Gets the multichannel promotion validity with the identifier which is an external reference for Voyado |
-| [OfferPromotions_RedeemByPromotionId](#offerpromotions_redeembypromotionid)                       | Redeem a promotion (multichannel offer or mobile swipe) for a Contact using the internal promotion Id  |
-
-&nbsp;
-&nbsp;Redemption channel can be POS, ECOM or OTHER. |
-|[OfferPromotions_ReactivatePromotionCode](#offerpromotions_reactivatepromotioncode)| Reactivate a redeemed reward voucher |
+| Methods                                                                                           | Description                                                                                                                                         |
+| :------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [MultichannelPromotions_GetById](#multichannelpromotions_getbyid)                                 | Gets the multichannel promotion with the identifier which is set by Voyado                                                                          |
+| [MultichannelPromotions_Update](#multichannelpromotions_update)                                   | Updates an existing multichannel promotion. Only multichannel promotion in status 'Draft' can be updated.                                           |
+| [MultichannelPromotions_DeleteById](#multichannelpromotions_deletebyid)                           | Only unassigned multichannel promotions can be deleted                                                                                              |
+| [MultichannelPromotions_GetValidityById](#multichannelpromotions_getvaliditybyid)                 | Gets the multichannel promotion with the identifier which is an internal reference for Voyado                                                       |
+| [MultichannelPromotions_UpdateValidity](#multichannelpromotions_updatevalidity)                   | Updates duration of an existing multichannel promotion. Only multichannel promotion in status 'Draft' can be updated.                               |
+| [MultichannelPromotions_GetByExternalId](#multichannelpromotions_getbyexternalid)                 | Gets the multichannel promotion with the identifier which is an external reference for Voyado                                                       |
+| [MultichannelPromotions_Create](#multichannelpromotions_create)                                   | Only creates multichannel promotion in status 'Draft'.                                                                                              |
+| [MultichannelPromotions_DeleteByExternalId](#multichannelpromotions_deletebyexternalid)           | Only unassigned multichannel promotions can be deleted                                                                                              |
+| [MultichannelPromotions_GetByValidityExternalId](#multichannelpromotions_getbyvalidityexternalid) | Gets the multichannel promotion validity with the identifier which is an external reference for Voyado                                              |
+| [OfferPromotions_RedeemByPromotionId](#offerpromotions_redeembypromotionid)                       | Redeem a promotion (multichannel offer or mobile swipe) for a Contact using the internal promotion Id Redemption channel can be POS, ECOM or OTHER. |
+| [OfferPromotions_ReactivatePromotionCode](#offerpromotions_reactivatepromotioncode)               | Reactivate a redeemed reward voucher                                                                                                                |
 
 ## MultichannelPromotions_GetById
 
@@ -56,8 +51,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## MultichannelPromotions_Update
 
-Updates an existing multichannel promotion.
-&nbsp;Only multichannel promotion in status 'Draft' can be updated.
+Updates an existing multichannel promotion. Only multichannel promotion in status 'Draft' can be updated.
 
 - HTTP Method: `PUT`
 - Endpoint: `/api/v2/promotions/multichannels/{id}`
@@ -95,7 +89,7 @@ import {
 
   const assignDateRange: AssignDateRange = {
     unit: unit,
-    amount: 2103185352,
+    amount: 1231786213,
   };
 
   const promotionValidityModel: PromotionValidityModel = {
@@ -116,7 +110,7 @@ import {
     MultichannelPromotionRedemptionChannelModelValueType.PERCENT;
 
   const multichannelPromotionRedemptionChannelModel: MultichannelPromotionRedemptionChannelModel = {
-    type_: multichannelPromotionRedemptionChannelModelType,
+    type: multichannelPromotionRedemptionChannelModelType,
     valueType: multichannelPromotionRedemptionChannelModelValueType,
     value: 'value',
     localValues: [{}],
@@ -207,8 +201,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## MultichannelPromotions_UpdateValidity
 
-Updates duration of an existing multichannel promotion.
-&nbsp;Only multichannel promotion in status 'Draft' can be updated.
+Updates duration of an existing multichannel promotion. Only multichannel promotion in status 'Draft' can be updated.
 
 - HTTP Method: `PUT`
 - Endpoint: `/api/v2/promotions/multichannels/{id}/validity`
@@ -238,7 +231,7 @@ import { AssignDateRange, PromotionValidityModel, VoyadoEngage } from 'voyado_en
 
   const assignDateRange: AssignDateRange = {
     unit: unit,
-    amount: 2103185352,
+    amount: 1231786213,
   };
 
   const input: PromotionValidityModel = {
@@ -325,7 +318,7 @@ import {
 
   const assignDateRange: AssignDateRange = {
     unit: unit,
-    amount: 2103185352,
+    amount: 1231786213,
   };
 
   const promotionValidityModel: PromotionValidityModel = {
@@ -346,7 +339,7 @@ import {
     MultichannelPromotionRedemptionChannelModelValueType.PERCENT;
 
   const multichannelPromotionRedemptionChannelModel: MultichannelPromotionRedemptionChannelModel = {
-    type_: multichannelPromotionRedemptionChannelModelType,
+    type: multichannelPromotionRedemptionChannelModelType,
     valueType: multichannelPromotionRedemptionChannelModelValueType,
     value: 'value',
     localValues: [{}],
@@ -439,9 +432,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## OfferPromotions_RedeemByPromotionId
 
-Redeem a promotion (multichannel offer or mobile swipe) for a Contact using the internal promotion Id
-&nbsp;
-&nbsp;Redemption channel can be POS, ECOM or OTHER.
+Redeem a promotion (multichannel offer or mobile swipe) for a Contact using the internal promotion Id Redemption channel can be POS, ECOM or OTHER.
 
 - HTTP Method: `POST`
 - Endpoint: `/api/v2/promotions/codes/{promotionId}/redeem`

@@ -2,10 +2,9 @@
 
 import {
   ChallengeGetChallengeDefinitionsStatus,
-  ChallengeGetChallengesFilter,
   challengeGetChallengeDefinitionsStatus,
-  challengeGetChallengesFilter,
-} from './models';
+} from './models/challenge-get-challenge-definitions-status';
+import { ChallengeGetChallengesFilter, challengeGetChallengesFilter } from './models/challenge-get-challenges-filter';
 
 export interface ChallengeGetChallengeDefinitionsParams {
   offset?: number;

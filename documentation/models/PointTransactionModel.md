@@ -12,7 +12,7 @@
 | modifiedOn                  | string            | ❌       |             |
 | source                      | string            | ❌       |             |
 | transactionDate             | string            | ❌       |             |
-| type\_                      | string            | ❌       |             |
+| type                        | string            | ❌       |             |
 | validFrom                   | string            | ❌       |             |
 | validTo                     | string            | ❌       |             |
 | retailTransactionLineItemId | string            | ❌       |             |

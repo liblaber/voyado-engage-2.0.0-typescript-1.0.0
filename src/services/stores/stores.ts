@@ -4,7 +4,8 @@ import { z } from 'zod';
 import { BaseService } from '../base-service';
 import { ContentType, HttpResponse } from '../../http';
 import { RequestConfig } from '../../http/types';
-import { ApiStore, apiStoreRequest, apiStoreResponse } from '../common';
+import { Request } from '../../http/transport/request';
+import { ApiStore, apiStoreRequest, apiStoreResponse } from './models/api-store';
 import { StoresVGetStoreParams, StoresVGetStoresParams } from './request-params';
 
 export class StoresService extends BaseService {
@@ -17,21 +18,18 @@ export class StoresService extends BaseService {
     params?: StoresVGetStoresParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ApiStore[]>> {
-    const path = '/api/v2/stores';
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/stores',
+      config: this.config,
       responseSchema: z.array(apiStoreResponse),
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.includeInactive) {
-      options.queryParams['includeInactive'] = params?.includeInactive;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addQueryParam('includeInactive', params?.includeInactive);
+    return this.client.call(request);
   }
 
   /**
@@ -39,20 +37,19 @@ export class StoresService extends BaseService {
    * @returns {Promise<HttpResponse<ApiStore>>} OK
    */
   async storesVCreateStore(body: ApiStore, requestConfig?: RequestConfig): Promise<HttpResponse<ApiStore>> {
-    const path = '/api/v2/stores';
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/api/v2/stores',
+      config: this.config,
       responseSchema: apiStoreResponse,
       requestSchema: apiStoreRequest,
-      body: body as any,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 
   /**
@@ -66,21 +63,19 @@ export class StoresService extends BaseService {
     params?: StoresVGetStoreParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ApiStore>> {
-    const path = this.client.buildPath('/api/v2/stores/{externalId}', { externalId: externalId });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/stores/{externalId}',
+      config: this.config,
       responseSchema: apiStoreResponse,
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.includeInactive) {
-      options.queryParams['includeInactive'] = params?.includeInactive;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('externalId', externalId);
+    request.addQueryParam('includeInactive', params?.includeInactive);
+    return this.client.call(request);
   }
 
   /**
@@ -93,19 +88,19 @@ export class StoresService extends BaseService {
     body: ApiStore,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ApiStore>> {
-    const path = this.client.buildPath('/api/v2/stores/{externalId}', { externalId: externalId });
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/api/v2/stores/{externalId}',
+      config: this.config,
       responseSchema: apiStoreResponse,
       requestSchema: apiStoreRequest,
-      body: body as any,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addPathParam('externalId', externalId);
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 }

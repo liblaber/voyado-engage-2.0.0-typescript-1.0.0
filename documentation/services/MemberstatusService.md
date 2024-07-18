@@ -2,45 +2,22 @@
 
 A list of all methods in the `MemberstatusService` service. Click on the method name to view detailed information about that method.
 
-| Methods                                 | Description                                         |
-| :-------------------------------------- | :-------------------------------------------------- |
-| [MemberStatusV_Get](#memberstatusv_get) | Gets the first found member that matches the query. |
-
-&nbsp;
-&nbsp;Operation to get member overview. Is usually called from
-&nbsp;POS after a member gives some identification information
-&nbsp;this method returns the status together with contactId (GUID)
-&nbsp;and memberNumber (if available). The contactId may be used
-&nbsp;to get detailed contact information.
-&nbsp;
-&nbsp;Common identification fields that may be used in the query:
-&nbsp;socialSecurityNumber, email, mobilePhone, memberNumber and externalId
-&nbsp;
-&nbsp;The language of the returned answer is controlled by the language setting of the user connected to the API-key. |
+| Methods                                 | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| :-------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [MemberStatusV_Get](#memberstatusv_get) | Gets the first found member that matches the query. Operation to get member overview. Is usually called from POS after a member gives some identification information this method returns the status together with contactId (GUID) and memberNumber (if available). The contactId may be used to get detailed contact information. Common identification fields that may be used in the query: socialSecurityNumber, email, mobilePhone, memberNumber and externalId The language of the returned answer is controlled by the language setting of the user connected to the API-key. |
 
 ## MemberStatusV_Get
 
-Gets the first found member that matches the query.
-&nbsp;
-&nbsp;Operation to get member overview. Is usually called from
-&nbsp;POS after a member gives some identification information
-&nbsp;this method returns the status together with contactId (GUID)
-&nbsp;and memberNumber (if available). The contactId may be used
-&nbsp;to get detailed contact information.
-&nbsp;
-&nbsp;Common identification fields that may be used in the query:
-&nbsp;socialSecurityNumber, email, mobilePhone, memberNumber and externalId
-&nbsp;
-&nbsp;The language of the returned answer is controlled by the language setting of the user connected to the API-key.
+Gets the first found member that matches the query. Operation to get member overview. Is usually called from POS after a member gives some identification information this method returns the status together with contactId (GUID) and memberNumber (if available). The contactId may be used to get detailed contact information. Common identification fields that may be used in the query: socialSecurityNumber, email, mobilePhone, memberNumber and externalId The language of the returned answer is controlled by the language setting of the user connected to the API-key.
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/memberstatus`
 
 **Parameters**
 
-| Name  | Type   | Required | Description                                 |
-| :---- | :----- | :------- | :------------------------------------------ |
-| query | string | ✅       | ```{fieldId}:{value}```, e.g. email:test@test.com |
+| Name  | Type   | Required | Description                                   |
+| :---- | :----- | :------- | :-------------------------------------------- |
+| query | string | ✅       | `{fieldId}:{value}`, e.g. email:test@test.com |
 
 **Return Type**
 

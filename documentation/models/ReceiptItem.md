@@ -4,7 +4,7 @@
 
 | Name           | Type                   | Required | Description |
 | :------------- | :--------------------- | :------- | :---------- |
-| type\_         | ReceiptItemType        | ✅       |             |
+| type           | ReceiptItemType        | ✅       |             |
 | sku            | string                 | ✅       |             |
 | quantity       | number                 | ✅       |             |
 | grossPaidPrice | number                 | ✅       |             |

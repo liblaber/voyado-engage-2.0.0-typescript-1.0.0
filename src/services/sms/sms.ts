@@ -4,8 +4,9 @@ import { z } from 'zod';
 import { BaseService } from '../base-service';
 import { ContentType, HttpResponse } from '../../http';
 import { RequestConfig } from '../../http/types';
-import { SendSmsRequest, sendSmsRequestRequest } from './models';
-import { SendSmsResponse, sendSmsResponseResponse } from '../common';
+import { Request } from '../../http/transport/request';
+import { SendSmsRequest, sendSmsRequestRequest } from './models/send-sms-request';
+import { SendSmsResponse, sendSmsResponseResponse } from './models/send-sms-response';
 
 export class SmsService extends BaseService {
   /**
@@ -19,19 +20,18 @@ Phone numbers must be prefixed with a + and country code
     body: SendSmsRequest,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<SendSmsResponse>> {
-    const path = '/api/v2/sms/sendToPhoneNumbers';
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/api/v2/sms/sendToPhoneNumbers',
+      config: this.config,
       responseSchema: sendSmsResponseResponse,
       requestSchema: sendSmsRequestRequest,
-      body: body as any,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 }

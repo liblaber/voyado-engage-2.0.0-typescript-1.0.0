@@ -2,13 +2,12 @@
 
 A list of all methods in the `InteractionsService` service. Click on the method name to view detailed information about that method.
 
-| Methods                                                                                                                                                      | Description                                                                                                                     |
-| :----------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------ |
-| [Interaction_GetInteraction](#interaction_getinteraction)                                                                                                    | Retrieve a specific Interaction by providing the interactionId.                                                                 |
-| [Interaction_DeleteInteraction](#interaction_deleteinteraction)                                                                                              | Delete a specific Interaction by providing the interactionId.                                                                   |
-| [Interaction_GetInteractions](#interaction_getinteractions)                                                                                                  | Retrieve multiple Interactions of a specified type connected to a specific contactId. Both schemaId and contactId are required. |
-| &nbsp;The continuation parameter can be used to access the next page when there are more than 50 records available. This token can be found in the response. |
-| [Interaction_CreateInteraction](#interaction_createinteraction)                                                                                              | Create a new Interaction connected to a specific contactId.                                                                     |
+| Methods                                                         | Description                                                                                                                                                                                                                                                                            |
+| :-------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Interaction_GetInteraction](#interaction_getinteraction)       | Retrieve a specific Interaction by providing the interactionId.                                                                                                                                                                                                                        |
+| [Interaction_DeleteInteraction](#interaction_deleteinteraction) | Delete a specific Interaction by providing the interactionId.                                                                                                                                                                                                                          |
+| [Interaction_GetInteractions](#interaction_getinteractions)     | Retrieve multiple Interactions of a specified type connected to a specific contactId. Both schemaId and contactId are required. The continuation parameter can be used to access the next page when there are more than 50 records available. This token can be found in the response. |
+| [Interaction_CreateInteraction](#interaction_createinteraction) | Create a new Interaction connected to a specific contactId.                                                                                                                                                                                                                            |
 
 ## Interaction_GetInteraction
 
@@ -74,8 +73,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## Interaction_GetInteractions
 
-Retrieve multiple Interactions of a specified type connected to a specific contactId. Both schemaId and contactId are required.
-&nbsp;The continuation parameter can be used to access the next page when there are more than 50 records available. This token can be found in the response.
+Retrieve multiple Interactions of a specified type connected to a specific contactId. Both schemaId and contactId are required. The continuation parameter can be used to access the next page when there are more than 50 records available. This token can be found in the response.
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/interactions`

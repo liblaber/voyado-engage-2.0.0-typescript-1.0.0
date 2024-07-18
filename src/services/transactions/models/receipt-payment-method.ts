@@ -5,16 +5,18 @@ import {
   receiptExtraDataItem,
   receiptExtraDataItemRequest,
   receiptExtraDataItemResponse,
-} from '../../common/receipt-extra-data-item';
+} from './receipt-extra-data-item';
 
 /**
  * The shape of the model inside the application code - what the users use
  */
-export const receiptPaymentMethod = z.object({
-  type_: z.string(),
-  description: z.string().optional(),
-  value: z.number(),
-  extraData: z.array(receiptExtraDataItem).optional(),
+export const receiptPaymentMethod: any = z.lazy(() => {
+  return z.object({
+    type: z.string(),
+    description: z.string().optional(),
+    value: z.number(),
+    extraData: z.array(receiptExtraDataItem).optional(),
+  });
 });
 
 /**
@@ -31,34 +33,38 @@ export type ReceiptPaymentMethod = z.infer<typeof receiptPaymentMethod>;
  * The shape of the model mapping from the api schema into the application shape.
  * Is equal to application shape if all property names match the api schema
  */
-export const receiptPaymentMethodResponse = z
-  .object({
-    type: z.string(),
-    description: z.string().optional(),
-    value: z.number(),
-    extraData: z.array(receiptExtraDataItemResponse).optional(),
-  })
-  .transform((data) => ({
-    type_: data['type'],
-    description: data['description'],
-    value: data['value'],
-    extraData: data['extraData'],
-  }));
+export const receiptPaymentMethodResponse: any = z.lazy(() => {
+  return z
+    .object({
+      type: z.string(),
+      description: z.string().optional(),
+      value: z.number(),
+      extraData: z.array(receiptExtraDataItemResponse).optional(),
+    })
+    .transform((data) => ({
+      type: data['type'],
+      description: data['description'],
+      value: data['value'],
+      extraData: data['extraData'],
+    }));
+});
 
 /**
  * The shape of the model mapping from the application shape into the api schema.
  * Is equal to application shape if all property names match the api schema
  */
-export const receiptPaymentMethodRequest = z
-  .object({
-    type_: z.string().nullish(),
-    description: z.string().nullish(),
-    value: z.number().nullish(),
-    extraData: z.array(receiptExtraDataItemRequest).nullish(),
-  })
-  .transform((data) => ({
-    type: data['type_'],
-    description: data['description'],
-    value: data['value'],
-    extraData: data['extraData'],
-  }));
+export const receiptPaymentMethodRequest: any = z.lazy(() => {
+  return z
+    .object({
+      type: z.string().nullish(),
+      description: z.string().nullish(),
+      value: z.number().nullish(),
+      extraData: z.array(receiptExtraDataItemRequest).nullish(),
+    })
+    .transform((data) => ({
+      type: data['type'],
+      description: data['description'],
+      value: data['value'],
+      extraData: data['extraData'],
+    }));
+});

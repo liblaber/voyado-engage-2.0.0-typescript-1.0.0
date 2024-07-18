@@ -7,7 +7,7 @@
 | id             | string | ❌       |             |
 | description    | string | ❌       |             |
 | expireDateTime | string | ❌       |             |
-| type\_         | string | ❌       |             |
+| type           | string | ❌       |             |
 | value          | any    | ❌       |             |
 | name           | string | ❌       |             |
 

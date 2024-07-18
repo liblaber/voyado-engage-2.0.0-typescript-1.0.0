@@ -4,7 +4,8 @@ import { z } from 'zod';
 import { BaseService } from '../base-service';
 import { ContentType, HttpResponse } from '../../http';
 import { RequestConfig } from '../../http/types';
-import { ContactSearchResult, contactSearchResultResponse } from '../common';
+import { Request } from '../../http/transport/request';
+import { ContactSearchResult, contactSearchResultResponse } from './models/contact-search-result';
 import { PersonLookupGetPersonLookupParams } from './request-params';
 
 export class PersonlookupService extends BaseService {
@@ -19,26 +20,19 @@ export class PersonlookupService extends BaseService {
     params?: PersonLookupGetPersonLookupParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ContactSearchResult>> {
-    const path = '/api/v2/personlookup/getpersonlookup';
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/personlookup/getpersonlookup',
+      config: this.config,
       responseSchema: contactSearchResultResponse,
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.socialSecurityNumber) {
-      options.queryParams['socialSecurityNumber'] = params?.socialSecurityNumber;
-    }
-    if (params?.phoneNumber) {
-      options.queryParams['phoneNumber'] = params?.phoneNumber;
-    }
-    if (params?.countryCode) {
-      options.queryParams['countryCode'] = params?.countryCode;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addQueryParam('socialSecurityNumber', params?.socialSecurityNumber);
+    request.addQueryParam('phoneNumber', params?.phoneNumber);
+    request.addQueryParam('countryCode', params?.countryCode);
+    return this.client.call(request);
   }
 }

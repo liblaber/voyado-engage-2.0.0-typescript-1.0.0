@@ -1,7 +1,7 @@
 {
   "name": "voyado_engage",
   "version": "1.0.0",
-  "description": "",
+  "description": "The Voyado Engage API enables developers to interact with Voyado's customer experience platform, allowing for the management and personalization of marketing efforts.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -13,8 +13,8 @@
     "api",
     "client"
   ],
-  "author": "Developer documentation",
-  "license": "",
+  "author": "LibLab",
+  "license": "MIT",
   "devDependencies": {
     "typescript": "5.3.3"
   },

@@ -5,6 +5,7 @@ export * from './order-contact';
 export * from './tax-detail';
 export * from './order-payment-method';
 export * from './order-item';
+export * from './order-fee';
 export * from './order-contact-match-key-type';
 export * from './order-item-type';
 export * from './order-item-discount';

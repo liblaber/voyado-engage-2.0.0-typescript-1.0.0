@@ -21,7 +21,7 @@
 | senderAddress        | string  | ❌       |             |
 | senderName           | string  | ❌       |             |
 | street               | string  | ❌       |             |
-| type\_               | string  | ❌       |             |
+| type                 | string  | ❌       |             |
 | zipCode              | string  | ❌       |             |
 | active               | boolean | ❌       |             |
 | timeZone             | string  | ❌       |             |

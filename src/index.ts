@@ -171,6 +171,31 @@ export class VoyadoEngage {
     this.transactions.baseUrl = environment;
   }
 
+  set timeout(timeout: number) {
+    this.achievements.timeout = timeout;
+    this.automation.timeout = timeout;
+    this.bisnode.timeout = timeout;
+    this.bonuschecks.timeout = timeout;
+    this.challenges.timeout = timeout;
+    this.consents.timeout = timeout;
+    this.contactoverview.timeout = timeout;
+    this.contacts.timeout = timeout;
+    this.interactions.timeout = timeout;
+    this.interactionschemas.timeout = timeout;
+    this.inventory.timeout = timeout;
+    this.memberstatus.timeout = timeout;
+    this.orders.timeout = timeout;
+    this.personlookup.timeout = timeout;
+    this.pointAccounts.timeout = timeout;
+    this.posoffers.timeout = timeout;
+    this.promotions.timeout = timeout;
+    this.sms.timeout = timeout;
+    this.stores.timeout = timeout;
+    this.targetAudiences.timeout = timeout;
+    this.tracking.timeout = timeout;
+    this.transactions.timeout = timeout;
+  }
+
   set token(token: string) {
     this.achievements.token = token;
     this.automation.token = token;

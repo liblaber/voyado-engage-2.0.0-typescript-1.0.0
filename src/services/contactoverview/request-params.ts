@@ -7,5 +7,5 @@ export interface ContactOverviewGetContactOverviewAsyncParams {
   socialSecurityNumber?: string;
   mobilePhone?: string;
   customKey?: string;
-  any_?: string;
+  any?: string;
 }

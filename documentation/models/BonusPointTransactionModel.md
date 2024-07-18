@@ -7,7 +7,7 @@
 | amount                          | number                         | ❌       |             |
 | transactionDateTime             | string                         | ❌       |             |
 | description                     | string                         | ❌       |             |
-| type\_                          | BonusPointTransactionModelType | ❌       |             |
+| type                            | BonusPointTransactionModelType | ❌       |             |
 | id                              | string                         | ❌       |             |
 | automationBonusAdjustmentReason | string                         | ❌       |             |
 

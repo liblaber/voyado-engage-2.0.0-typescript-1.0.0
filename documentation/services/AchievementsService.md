@@ -67,8 +67,8 @@ import { VoyadoEngage } from 'voyado_engage';
   });
 
   const { data } = await voyadoEngage.achievements.achievementsGetAllAchievements({
-    offset: 8,
-    count: 2,
+    offset: 7,
+    count: 10,
   });
 
   console.log(data);

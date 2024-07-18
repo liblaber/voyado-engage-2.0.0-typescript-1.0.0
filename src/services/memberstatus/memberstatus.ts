@@ -4,7 +4,8 @@ import { z } from 'zod';
 import { BaseService } from '../base-service';
 import { ContentType, HttpResponse } from '../../http';
 import { RequestConfig } from '../../http/types';
-import { MemberStatusModel, memberStatusModelResponse } from '../common';
+import { Request } from '../../http/transport/request';
+import { MemberStatusModel, memberStatusModelResponse } from './models/member-status-model';
 import { MemberStatusVGetParams } from './request-params';
 
 export class MemberstatusService extends BaseService {
@@ -21,27 +22,24 @@ Common identification fields that may be used in the query:
 socialSecurityNumber, email, mobilePhone, memberNumber and externalId
 
 The language of the returned answer is controlled by the language setting of the user connected to the API-key.
- * @param {string} query - {fieldId}:{value}, e.g. email:test@test.com
+ * @param {string} query - ```{fieldId}:{value}```, e.g. email:test@test.com
  * @returns {Promise<HttpResponse<MemberStatusModel>>} OK
  */
   async memberStatusVGet(
     params: MemberStatusVGetParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<MemberStatusModel>> {
-    const path = '/api/v2/memberstatus';
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/memberstatus',
+      config: this.config,
       responseSchema: memberStatusModelResponse,
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.query) {
-      options.queryParams['query'] = params?.query;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addQueryParam('query', params?.query);
+    return this.client.call(request);
   }
 }

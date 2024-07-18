@@ -7,7 +7,7 @@
 | messageId       | string  | ❌       |             |
 | name            | string  | ❌       |             |
 | sendDateTime    | string  | ❌       |             |
-| type\_          | string  | ❌       |             |
+| type            | string  | ❌       |             |
 | source          | string  | ❌       |             |
 | isTransactional | boolean | ❌       |             |
 | status          | string  | ❌       |             |

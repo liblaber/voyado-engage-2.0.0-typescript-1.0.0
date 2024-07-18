@@ -2,59 +2,21 @@
 
 A list of all methods in the `PosoffersService` service. Click on the method name to view detailed information about that method.
 
-| Methods                                                         | Description                                                        |
-| :-------------------------------------------------------------- | :----------------------------------------------------------------- |
-| [PosOffer_GetAllPosOffersByKey](#posoffer_getallposoffersbykey) | Get all POS offers for a contact. Expired, redeemed and available. |
-
-&nbsp;
-&nbsp;Finds the contact by using a key value other than Contact Id. This can
-&nbsp;only be used for contact types with exactly ONE key.
-&nbsp;The contact key attribute is configured for each Voyado instance. |
-|[PosOffer_GetAvailablePosOffersByKey](#posoffer_getavailableposoffersbykey)| Get all available POS offers for a contact.
-&nbsp;Expired and redeemed offers are excluded.
-&nbsp;
-&nbsp;Finds the contact by using a key value other than Contact Id. This can
-&nbsp;only be used for contact types with exactly ONE key.
-&nbsp;The contact key attribute is configured for each Voyado instance. |
-|[PosOffer_GetAllPosOffersByContactTypeAndKey](#posoffer_getallposoffersbycontacttypeandkey)| Get all POS offers for a contact. Expired, redeemed and available.
-&nbsp;
-&nbsp;Finds the contact by using a key value other than Contact Id. This can
-&nbsp;only be used for contact types with exactly ONE key.
-&nbsp;The contact key attribute is configured for each Voyado instance. |
-|[PosOffer_GetAvailablePosOffersByContactTypeAndKey](#posoffer_getavailableposoffersbycontacttypeandkey)| Get all available POS offers for a contact.
-&nbsp;Expired and redeemed offers are excluded.
-&nbsp;
-&nbsp;Finds the contact by using a key value other than Contact Id. This can
-&nbsp;only be used for contact types with exactly ONE key.
-&nbsp;The contact key attribute is configured for each Voyado instance. |
-|[PosOffer_GetAllPosOffersForContact](#posoffer_getallposoffersforcontact)| Get all POS offers for a contact. Expired, redeemed and available.
-&nbsp;The result can be paginated, using the offset and
-&nbsp;count query parameters.
-&nbsp;Note: _expiresOn_ is obsolete and is always **null** |
-|[PosOffer_GetAvailablePosOffersForContact](#posoffer_getavailableposoffersforcontact)| Get all available POS offers for a contact.
-&nbsp;Expired and redeemed offers are excluded.
-&nbsp;
-&nbsp;The result can be paginated, using the offset and
-&nbsp;count query parameters. |
-|[PosOffer_Redeem](#posoffer_redeem)| Redeems a POS offer for a Contact using the internal Contact Id |
-|[PosOffer_RedeemByKey](#posoffer_redeembykey)| Redeems a POS offer for a Contact using the key for the contact type
-&nbsp;
-&nbsp;Finds the contact by using a key value other than Contact Id. This can
-&nbsp;only be used for contact types with exactly ONE key.
-&nbsp;The contact key attribute is configured for each Voyado instance. |
-|[PosOffer_RedeemByContactTypeAndKey](#posoffer_redeembycontacttypeandkey)| Redeems a POS offer for a Contact using the key for the contact type
-&nbsp;
-&nbsp;Finds the contact by using a key value other than Contact Id. This can
-&nbsp;only be used for contact types with exactly ONE key.
-&nbsp;The contact key attribute is configured for each Voyado instance. |
+| Methods                                                                                                 | Description                                                                                                                                                                                                                                                                         |
+| :------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [PosOffer_GetAllPosOffersByKey](#posoffer_getallposoffersbykey)                                         | Get all POS offers for a contact. Expired, redeemed and available. Finds the contact by using a key value other than Contact Id. This can only be used for contact types with exactly ONE key. The contact key attribute is configured for each Voyado instance.                    |
+| [PosOffer_GetAvailablePosOffersByKey](#posoffer_getavailableposoffersbykey)                             | Get all available POS offers for a contact. Expired and redeemed offers are excluded. Finds the contact by using a key value other than Contact Id. This can only be used for contact types with exactly ONE key. The contact key attribute is configured for each Voyado instance. |
+| [PosOffer_GetAllPosOffersByContactTypeAndKey](#posoffer_getallposoffersbycontacttypeandkey)             | Get all POS offers for a contact. Expired, redeemed and available. Finds the contact by using a key value other than Contact Id. This can only be used for contact types with exactly ONE key. The contact key attribute is configured for each Voyado instance.                    |
+| [PosOffer_GetAvailablePosOffersByContactTypeAndKey](#posoffer_getavailableposoffersbycontacttypeandkey) | Get all available POS offers for a contact. Expired and redeemed offers are excluded. Finds the contact by using a key value other than Contact Id. This can only be used for contact types with exactly ONE key. The contact key attribute is configured for each Voyado instance. |
+| [PosOffer_GetAllPosOffersForContact](#posoffer_getallposoffersforcontact)                               | Get all POS offers for a contact. Expired, redeemed and available. The result can be paginated, using the offset and count query parameters. Note: _expiresOn_ is obsolete and is always **null**                                                                                   |
+| [PosOffer_GetAvailablePosOffersForContact](#posoffer_getavailableposoffersforcontact)                   | Get all available POS offers for a contact. Expired and redeemed offers are excluded. The result can be paginated, using the offset and count query parameters.                                                                                                                     |
+| [PosOffer_Redeem](#posoffer_redeem)                                                                     | Redeems a POS offer for a Contact using the internal Contact Id                                                                                                                                                                                                                     |
+| [PosOffer_RedeemByKey](#posoffer_redeembykey)                                                           | Redeems a POS offer for a Contact using the key for the contact type Finds the contact by using a key value other than Contact Id. This can only be used for contact types with exactly ONE key. The contact key attribute is configured for each Voyado instance.                  |
+| [PosOffer_RedeemByContactTypeAndKey](#posoffer_redeembycontacttypeandkey)                               | Redeems a POS offer for a Contact using the key for the contact type Finds the contact by using a key value other than Contact Id. This can only be used for contact types with exactly ONE key. The contact key attribute is configured for each Voyado instance.                  |
 
 ## PosOffer_GetAllPosOffersByKey
 
-Get all POS offers for a contact. Expired, redeemed and available.
-&nbsp;
-&nbsp;Finds the contact by using a key value other than Contact Id. This can
-&nbsp;only be used for contact types with exactly ONE key.
-&nbsp;The contact key attribute is configured for each Voyado instance.
+Get all POS offers for a contact. Expired, redeemed and available. Finds the contact by using a key value other than Contact Id. This can only be used for contact types with exactly ONE key. The contact key attribute is configured for each Voyado instance.
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/bykey/{keyValue}/posoffers/all`
@@ -87,12 +49,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## PosOffer_GetAvailablePosOffersByKey
 
-Get all available POS offers for a contact.
-&nbsp;Expired and redeemed offers are excluded.
-&nbsp;
-&nbsp;Finds the contact by using a key value other than Contact Id. This can
-&nbsp;only be used for contact types with exactly ONE key.
-&nbsp;The contact key attribute is configured for each Voyado instance.
+Get all available POS offers for a contact. Expired and redeemed offers are excluded. Finds the contact by using a key value other than Contact Id. This can only be used for contact types with exactly ONE key. The contact key attribute is configured for each Voyado instance.
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/bykey/{keyValue}/posoffers/available`
@@ -125,11 +82,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## PosOffer_GetAllPosOffersByContactTypeAndKey
 
-Get all POS offers for a contact. Expired, redeemed and available.
-&nbsp;
-&nbsp;Finds the contact by using a key value other than Contact Id. This can
-&nbsp;only be used for contact types with exactly ONE key.
-&nbsp;The contact key attribute is configured for each Voyado instance.
+Get all POS offers for a contact. Expired, redeemed and available. Finds the contact by using a key value other than Contact Id. This can only be used for contact types with exactly ONE key. The contact key attribute is configured for each Voyado instance.
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/{contactType}/bykey/{keyValue}/posoffers/all`
@@ -163,12 +116,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## PosOffer_GetAvailablePosOffersByContactTypeAndKey
 
-Get all available POS offers for a contact.
-&nbsp;Expired and redeemed offers are excluded.
-&nbsp;
-&nbsp;Finds the contact by using a key value other than Contact Id. This can
-&nbsp;only be used for contact types with exactly ONE key.
-&nbsp;The contact key attribute is configured for each Voyado instance.
+Get all available POS offers for a contact. Expired and redeemed offers are excluded. Finds the contact by using a key value other than Contact Id. This can only be used for contact types with exactly ONE key. The contact key attribute is configured for each Voyado instance.
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/{contactType}/bykey/{keyValue}/posoffers/available`
@@ -205,10 +153,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## PosOffer_GetAllPosOffersForContact
 
-Get all POS offers for a contact. Expired, redeemed and available.
-&nbsp;The result can be paginated, using the offset and
-&nbsp;count query parameters.
-&nbsp;Note: _expiresOn_ is obsolete and is always **null**
+Get all POS offers for a contact. Expired, redeemed and available. The result can be paginated, using the offset and count query parameters. Note: _expiresOn_ is obsolete and is always **null**
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/{contactId}/posoffers/all`
@@ -236,8 +181,8 @@ import { VoyadoEngage } from 'voyado_engage';
   });
 
   const { data } = await voyadoEngage.posoffers.posOfferGetAllPosOffersForContact('contactId', {
-    offset: 2,
-    count: 7,
+    offset: 9,
+    count: 10,
   });
 
   console.log(data);
@@ -246,11 +191,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## PosOffer_GetAvailablePosOffersForContact
 
-Get all available POS offers for a contact.
-&nbsp;Expired and redeemed offers are excluded.
-&nbsp;
-&nbsp;The result can be paginated, using the offset and
-&nbsp;count query parameters.
+Get all available POS offers for a contact. Expired and redeemed offers are excluded. The result can be paginated, using the offset and count query parameters.
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/{contactId}/posoffers/available`
@@ -278,7 +219,7 @@ import { VoyadoEngage } from 'voyado_engage';
   });
 
   const { data } = await voyadoEngage.posoffers.posOfferGetAvailablePosOffersForContact('contactId', {
-    offset: 3,
+    offset: 1,
     count: 123,
   });
 
@@ -322,11 +263,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## PosOffer_RedeemByKey
 
-Redeems a POS offer for a Contact using the key for the contact type
-&nbsp;
-&nbsp;Finds the contact by using a key value other than Contact Id. This can
-&nbsp;only be used for contact types with exactly ONE key.
-&nbsp;The contact key attribute is configured for each Voyado instance.
+Redeems a POS offer for a Contact using the key for the contact type Finds the contact by using a key value other than Contact Id. This can only be used for contact types with exactly ONE key. The contact key attribute is configured for each Voyado instance.
 
 - HTTP Method: `POST`
 - Endpoint: `/api/v2/contacts/bykey/{keyValue}/posoffers/{id}/redeem`
@@ -360,11 +297,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## PosOffer_RedeemByContactTypeAndKey
 
-Redeems a POS offer for a Contact using the key for the contact type
-&nbsp;
-&nbsp;Finds the contact by using a key value other than Contact Id. This can
-&nbsp;only be used for contact types with exactly ONE key.
-&nbsp;The contact key attribute is configured for each Voyado instance.
+Redeems a POS offer for a Contact using the key for the contact type Finds the contact by using a key value other than Contact Id. This can only be used for contact types with exactly ONE key. The contact key attribute is configured for each Voyado instance.
 
 - HTTP Method: `POST`
 - Endpoint: `/api/v2/contacts/{contactType}/bykey/{keyValue}/posoffers/{id}/redeem`

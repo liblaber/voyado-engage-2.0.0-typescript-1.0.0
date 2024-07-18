@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { BaseService } from '../base-service';
 import { ContentType, HttpResponse } from '../../http';
 import { RequestConfig } from '../../http/types';
+import { Request } from '../../http/transport/request';
 import { ContactOverviewGetContactOverviewAsyncParams } from './request-params';
 
 export class ContactoverviewService extends BaseService {
@@ -23,45 +24,30 @@ The dynamic fields of the response depend on your current Voyado configuration.
  * @param {string} [socialSecurityNumber] - 
  * @param {string} [mobilePhone] - 
  * @param {string} [customKey] - 
- * @param {string} [any_] - 
+ * @param {string} [any] - 
  * @returns {Promise<HttpResponse<any>>} OK
  */
   async contactOverviewGetContactOverviewAsync(
     params?: ContactOverviewGetContactOverviewAsyncParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<any>> {
-    const path = '/api/v2/contactoverview';
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contactoverview',
+      config: this.config,
       responseSchema: z.any(),
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.contactType) {
-      options.queryParams['contactType'] = params?.contactType;
-    }
-    if (params?.contactId) {
-      options.queryParams['contactId'] = params?.contactId;
-    }
-    if (params?.email) {
-      options.queryParams['email'] = params?.email;
-    }
-    if (params?.socialSecurityNumber) {
-      options.queryParams['socialSecurityNumber'] = params?.socialSecurityNumber;
-    }
-    if (params?.mobilePhone) {
-      options.queryParams['mobilePhone'] = params?.mobilePhone;
-    }
-    if (params?.customKey) {
-      options.queryParams['customKey'] = params?.customKey;
-    }
-    if (params?.any_) {
-      options.queryParams['any'] = params?.any_;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addQueryParam('contactType', params?.contactType);
+    request.addQueryParam('contactId', params?.contactId);
+    request.addQueryParam('email', params?.email);
+    request.addQueryParam('socialSecurityNumber', params?.socialSecurityNumber);
+    request.addQueryParam('mobilePhone', params?.mobilePhone);
+    request.addQueryParam('customKey', params?.customKey);
+    request.addQueryParam('any', params?.any);
+    return this.client.call(request);
   }
 }

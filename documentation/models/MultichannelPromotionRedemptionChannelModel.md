@@ -2,14 +2,13 @@
 
 **Properties**
 
-| Name                                                                                                                                                                         | Type                                                 | Required | Description                                 |
-| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------- | :------- | :------------------------------------------ |
-| type\_                                                                                                                                                                       | MultichannelPromotionRedemptionChannelModelType      | ❌       |                                             |
-| valueType                                                                                                                                                                    | MultichannelPromotionRedemptionChannelModelValueType | ❌       |                                             |
-| value                                                                                                                                                                        | string                                               | ❌       | The type of "Value" depends on "ValueType". |
-| &nbsp;"MONEY" expects a decimal as a string ("20.5"). "SWIPE", "EXTERNALOFFER" and "MANUAL" expects a string ("Promotion"). "PERCENT" expects an integer as a string ("20"). |
-| localValues                                                                                                                                                                  | any[]                                                | ❌       |                                             |
-| instruction                                                                                                                                                                  | string                                               | ❌       |                                             |
+| Name        | Type                                                 | Required | Description                                                                                                                                                                                                        |
+| :---------- | :--------------------------------------------------- | :------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type        | MultichannelPromotionRedemptionChannelModelType      | ❌       |                                                                                                                                                                                                                    |
+| valueType   | MultichannelPromotionRedemptionChannelModelValueType | ❌       |                                                                                                                                                                                                                    |
+| value       | string                                               | ❌       | The type of "Value" depends on "ValueType". "MONEY" expects a decimal as a string ("20.5"). "SWIPE", "EXTERNALOFFER" and "MANUAL" expects a string ("Promotion"). "PERCENT" expects an integer as a string ("20"). |
+| localValues | any[]                                                | ❌       |                                                                                                                                                                                                                    |
+| instruction | string                                               | ❌       |                                                                                                                                                                                                                    |
 
 # MultichannelPromotionRedemptionChannelModelType
 

@@ -5,7 +5,7 @@
 | Name        | Type   | Required | Description |
 | :---------- | :----- | :------- | :---------- |
 | value       | number | ✅       |             |
-| type\_      | string | ❌       |             |
+| type        | string | ❌       |             |
 | description | string | ❌       |             |
 | extraData   | any    | ❌       |             |
 

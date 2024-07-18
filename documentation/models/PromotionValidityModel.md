@@ -1,7 +1,6 @@
 # PromotionValidityModel
 
-Following class holds the duration information for a promotion.
-&nbsp;The this object uses to set and get the duration of a promotion.
+Following class holds the duration information for a promotion. The this object uses to set and get the duration of a promotion.
 
 **Properties**
 

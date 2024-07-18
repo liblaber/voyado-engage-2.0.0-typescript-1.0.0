@@ -2,30 +2,13 @@
 
 A list of all methods in the `ContactoverviewService` service. Click on the method name to view detailed information about that method.
 
-| Methods                                                                             | Description                                                      |
-| :---------------------------------------------------------------------------------- | :--------------------------------------------------------------- |
-| [ContactOverview_GetContactOverviewAsync](#contactoverview_getcontactoverviewasync) | Get all information about a single contact by specifying either: |
-
-&nbsp;- contactId
-&nbsp;- email and contactType
-&nbsp;- socialSecurityNumber and contactType
-&nbsp;- mobilePhone and contactType
-&nbsp;- customKey and contactType (the customKey must be configured by your supplier)
-&nbsp;- any and contactType - the any field can contain email, socialSecurityNumber, mobilePhone or the custom key (and are checked in that order)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;The dynamic fields of the response depend on your current Voyado configuration. |
+| Methods                                                                             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| :---------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [ContactOverview_GetContactOverviewAsync](#contactoverview_getcontactoverviewasync) | Get all information about a single contact by specifying either: - contactId - email and contactType - socialSecurityNumber and contactType - mobilePhone and contactType - customKey and contactType (the customKey must be configured by your supplier) - any and contactType - the any field can contain email, socialSecurityNumber, mobilePhone or the custom key (and are checked in that order) The dynamic fields of the response depend on your current Voyado configuration. |
 
 ## ContactOverview_GetContactOverviewAsync
 
-Get all information about a single contact by specifying either:
-&nbsp;- contactId
-&nbsp;- email and contactType
-&nbsp;- socialSecurityNumber and contactType
-&nbsp;- mobilePhone and contactType
-&nbsp;- customKey and contactType (the customKey must be configured by your supplier)
-&nbsp;- any and contactType - the any field can contain email, socialSecurityNumber, mobilePhone or the custom key (and are checked in that order)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;The dynamic fields of the response depend on your current Voyado configuration.
+Get all information about a single contact by specifying either: - contactId - email and contactType - socialSecurityNumber and contactType - mobilePhone and contactType - customKey and contactType (the customKey must be configured by your supplier) - any and contactType - the any field can contain email, socialSecurityNumber, mobilePhone or the custom key (and are checked in that order) The dynamic fields of the response depend on your current Voyado configuration.
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contactoverview`
@@ -40,7 +23,7 @@ Get all information about a single contact by specifying either:
 | socialSecurityNumber | string | ❌       |             |
 | mobilePhone          | string | ❌       |             |
 | customKey            | string | ❌       |             |
-| any\_                | string | ❌       |             |
+| any                  | string | ❌       |             |
 
 **Return Type**
 
@@ -63,7 +46,7 @@ import { VoyadoEngage } from 'voyado_engage';
     socialSecurityNumber: 'socialSecurityNumber',
     mobilePhone: 'mobilePhone',
     customKey: 'customKey',
-    any_: 'any',
+    any: 'any',
   });
 
   console.log(data);

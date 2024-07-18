@@ -4,7 +4,7 @@
 
 | Name                  | Type                | Required | Description |
 | :-------------------- | :------------------ | :------- | :---------- |
-| type\_                | OrderItemType       | ✅       |             |
+| type                  | OrderItemType       | ✅       |             |
 | sku                   | string              | ✅       |             |
 | quantity              | number              | ✅       |             |
 | grossPaidPrice        | number              | ✅       |             |

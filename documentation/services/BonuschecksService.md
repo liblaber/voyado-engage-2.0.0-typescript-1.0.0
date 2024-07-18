@@ -2,28 +2,16 @@
 
 A list of all methods in the `BonuschecksService` service. Click on the method name to view detailed information about that method.
 
-| Methods                                                                       | Description                                                          |
-| :---------------------------------------------------------------------------- | :------------------------------------------------------------------- |
-| [BonusChecks_GetBonusChecksForContact](#bonuschecks_getbonuschecksforcontact) | Get all bonus checks for a contact. Expired, redeemed and available. |
-
-&nbsp;The result can be paginated, using the offset and
-&nbsp;count query parameters. |
-|[BonusChecks_GetRedeemedBonusChecksForContact](#bonuschecks_getredeemedbonuschecksforcontact)| Get redeemed bonus checks for a contact.
-&nbsp;The result can be paginated, using the offset and
-&nbsp;count query parameters. |
-|[BonusChecks_GetAvailableBonusChecks](#bonuschecks_getavailablebonuschecks)| Get available bonus checks for a contact.
-&nbsp;
-&nbsp;Expired and redeemed bonus checks are excluded
-&nbsp;
-&nbsp;The result can be paginated, using the _offset_
-&nbsp;and _count_ query parameters. |
-|[BonusChecks_RedeemBonusCheck](#bonuschecks_redeembonuscheck)| Redeem a bonus check for a certain contact. |
+| Methods                                                                                       | Description                                                                                                                                                            |
+| :-------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [BonusChecks_GetBonusChecksForContact](#bonuschecks_getbonuschecksforcontact)                 | Get all bonus checks for a contact. Expired, redeemed and available. The result can be paginated, using the offset and count query parameters.                         |
+| [BonusChecks_GetRedeemedBonusChecksForContact](#bonuschecks_getredeemedbonuschecksforcontact) | Get redeemed bonus checks for a contact. The result can be paginated, using the offset and count query parameters.                                                     |
+| [BonusChecks_GetAvailableBonusChecks](#bonuschecks_getavailablebonuschecks)                   | Get available bonus checks for a contact. Expired and redeemed bonus checks are excluded The result can be paginated, using the _offset_ and _count_ query parameters. |
+| [BonusChecks_RedeemBonusCheck](#bonuschecks_redeembonuscheck)                                 | Redeem a bonus check for a certain contact.                                                                                                                            |
 
 ## BonusChecks_GetBonusChecksForContact
 
-Get all bonus checks for a contact. Expired, redeemed and available.
-&nbsp;The result can be paginated, using the offset and
-&nbsp;count query parameters.
+Get all bonus checks for a contact. Expired, redeemed and available. The result can be paginated, using the offset and count query parameters.
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/{contactId}/bonuschecks`
@@ -51,8 +39,8 @@ import { VoyadoEngage } from 'voyado_engage';
   });
 
   const { data } = await voyadoEngage.bonuschecks.bonusChecksGetBonusChecksForContact('contactId', {
-    offset: 3,
-    count: 6,
+    offset: 2,
+    count: 7,
   });
 
   console.log(data);
@@ -61,9 +49,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## BonusChecks_GetRedeemedBonusChecksForContact
 
-Get redeemed bonus checks for a contact.
-&nbsp;The result can be paginated, using the offset and
-&nbsp;count query parameters.
+Get redeemed bonus checks for a contact. The result can be paginated, using the offset and count query parameters.
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/{contactId}/bonuschecks/redeemed`
@@ -91,8 +77,8 @@ import { VoyadoEngage } from 'voyado_engage';
   });
 
   const { data } = await voyadoEngage.bonuschecks.bonusChecksGetRedeemedBonusChecksForContact('contactId', {
-    offset: 3,
-    count: 8,
+    offset: 6,
+    count: 3,
   });
 
   console.log(data);
@@ -101,12 +87,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
 ## BonusChecks_GetAvailableBonusChecks
 
-Get available bonus checks for a contact.
-&nbsp;
-&nbsp;Expired and redeemed bonus checks are excluded
-&nbsp;
-&nbsp;The result can be paginated, using the _offset_
-&nbsp;and _count_ query parameters.
+Get available bonus checks for a contact. Expired and redeemed bonus checks are excluded The result can be paginated, using the _offset_ and _count_ query parameters.
 
 - HTTP Method: `GET`
 - Endpoint: `/api/v2/contacts/{contactId}/bonuschecks/available`
@@ -134,7 +115,7 @@ import { VoyadoEngage } from 'voyado_engage';
   });
 
   const { data } = await voyadoEngage.bonuschecks.bonusChecksGetAvailableBonusChecks('contactId', {
-    offset: 5,
+    offset: 8,
     count: 9,
   });
 

@@ -4,12 +4,12 @@ import { z } from 'zod';
 import { BaseService } from '../base-service';
 import { ContentType, HttpResponse } from '../../http';
 import { RequestConfig } from '../../http/types';
+import { Request } from '../../http/transport/request';
+import { ApiAchievementValue, apiAchievementValueResponse } from './models/api-achievement-value';
 import {
-  ApiAchievementValue,
   PagedResultOfApiAchievementDefinition,
-  apiAchievementValueResponse,
   pagedResultOfApiAchievementDefinitionResponse,
-} from '../common';
+} from './models/paged-result-of-api-achievement-definition';
 import { AchievementsGetAllAchievementsParams } from './request-params';
 
 export class AchievementsService extends BaseService {
@@ -22,17 +22,18 @@ export class AchievementsService extends BaseService {
     contactId: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<ApiAchievementValue[]>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/achievements', { contactId: contactId });
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/contacts/{contactId}/achievements',
+      config: this.config,
       responseSchema: z.array(apiAchievementValueResponse),
       requestSchema: z.any(),
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    return this.client.call(request);
   }
 
   /**
@@ -45,24 +46,19 @@ export class AchievementsService extends BaseService {
     params?: AchievementsGetAllAchievementsParams,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<PagedResultOfApiAchievementDefinition>> {
-    const path = '/api/v2/achievements';
-    const options: any = {
+    const request = new Request({
+      method: 'GET',
+      path: '/api/v2/achievements',
+      config: this.config,
       responseSchema: pagedResultOfApiAchievementDefinitionResponse,
       requestSchema: z.any(),
-      queryParams: {},
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    if (params?.offset) {
-      options.queryParams['offset'] = params?.offset;
-    }
-    if (params?.count) {
-      options.queryParams['count'] = params?.count;
-    }
-    return this.client.get(path, options);
+      requestConfig,
+    });
+    request.addQueryParam('offset', params?.offset);
+    request.addQueryParam('count', params?.count);
+    return this.client.call(request);
   }
 
   /**
@@ -77,23 +73,21 @@ export class AchievementsService extends BaseService {
     body: any,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/achievements/{achievementId}', {
-      contactId: contactId,
-      achievementId: achievementId,
-    });
-    const options: any = {
+    const request = new Request({
+      method: 'POST',
+      body,
+      path: '/api/v2/contacts/{contactId}/achievements/{achievementId}',
+      config: this.config,
       responseSchema: z.undefined(),
       requestSchema: z.any(),
-      body: body as any,
-      headers: {
-        'Content-Type': 'application/json',
-      },
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.post(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addPathParam('achievementId', achievementId);
+    request.addHeaderParam('Content-Type', 'application/json');
+    return this.client.call(request);
   }
 
   /**
@@ -107,19 +101,18 @@ export class AchievementsService extends BaseService {
     achievementId: string,
     requestConfig?: RequestConfig,
   ): Promise<HttpResponse<undefined>> {
-    const path = this.client.buildPath('/api/v2/contacts/{contactId}/achievements/{achievementId}', {
-      contactId: contactId,
-      achievementId: achievementId,
-    });
-    const options: any = {
+    const request = new Request({
+      method: 'DELETE',
+      path: '/api/v2/contacts/{contactId}/achievements/{achievementId}',
+      config: this.config,
       responseSchema: z.undefined(),
       requestSchema: z.any(),
-      headers: {},
       requestContentType: ContentType.Json,
       responseContentType: ContentType.Json,
-      retry: requestConfig?.retry,
-      config: this.config,
-    };
-    return this.client.delete(path, options);
+      requestConfig,
+    });
+    request.addPathParam('contactId', contactId);
+    request.addPathParam('achievementId', achievementId);
+    return this.client.call(request);
   }
 }

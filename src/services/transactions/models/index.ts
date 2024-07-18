@@ -8,6 +8,7 @@ export * from './receipt-payment-method';
 export * from './receipt-item';
 export * from './receipt-used-bonus-check';
 export * from './receipt-used-promotion';
+export * from './receipt-extra-data-item';
 export * from './receipt-contact-match-key-type';
 export * from './receipt-item-type';
 export * from './receipt-item-discount';
