@@ -42,23 +42,23 @@ import { Order, OrderContact, OrderFee, OrderItem, OrderPaymentMethod, TaxDetail
 
   const taxDetail: TaxDetail = {
     description: 'description',
-    value: 5.55,
-    percent: 1.96,
-    totalIncludingTax: 9.77,
-    totalExcludingTax: 8.29,
+    value: 9.77,
+    percent: 8.29,
+    totalIncludingTax: 7.44,
+    totalExcludingTax: 0.1,
   };
 
   const orderPaymentMethod: OrderPaymentMethod = {
     type: 'type',
     description: 'description',
-    value: 7.44,
+    value: 3.23,
     extraData: [],
   };
 
   const orderItemType = OrderItemType.PURCHASE;
 
   const orderItemDiscount: OrderItemDiscount = {
-    value: -273220990.98,
+    value: -85296006.04,
     type: 'type',
     description: 'description',
     extraData: [],
@@ -67,26 +67,26 @@ import { Order, OrderContact, OrderFee, OrderItem, OrderPaymentMethod, TaxDetail
   const orderItem: OrderItem = {
     type: orderItemType,
     sku: 'sku',
-    quantity: 0.1,
-    grossPaidPrice: 3.23,
-    grossPaidPricePerUnit: 2.41,
-    taxAmount: 4.68,
-    taxPercent: 2.6,
+    quantity: 2.41,
+    grossPaidPrice: 4.68,
+    grossPaidPricePerUnit: 2.6,
+    taxAmount: 2.06,
+    taxPercent: 5.07,
     description: 'description',
     imageUrl: 'imageUrl',
     targetUrl: 'targetUrl',
     extraData: [],
-    totalDiscount: 2.06,
-    originalPrice: 5.07,
-    originalPricePerUnit: 5.96,
+    totalDiscount: 5.96,
+    originalPrice: 8.73,
+    originalPricePerUnit: 7.23,
     discounts: [orderItemDiscount],
     discounted: true,
   };
 
   const orderFee: OrderFee = {
-    value: 9.6,
-    tax: 0.26,
-    taxPercent: 9.9,
+    value: 9.9,
+    tax: 1.47,
+    taxPercent: 7.35,
   };
 
   const input: Order = {
@@ -100,20 +100,20 @@ import { Order, OrderContact, OrderFee, OrderItem, OrderPaymentMethod, TaxDetail
     statusChangedDate: 'statusChangedDate',
     storeId: 'storeId',
     currency: 'currency',
-    exchangeRateToGroupCurrency: 9.6,
+    exchangeRateToGroupCurrency: 7.73,
     extraData: [],
-    totalGrossPrice: 9.8,
-    totalTax: 7.73,
+    totalGrossPrice: 5.55,
+    totalTax: 1.96,
     taxDetails: [taxDetail],
     paymentMethods: [orderPaymentMethod],
     items: [orderItem],
     freightFee: orderFee,
     handlingFee: orderFee,
     totalRoundOff: orderFee,
-    totalDiscounts: 1.47,
-    totalOriginalPrice: 7.35,
-    totalItemsPrice: 2.46,
-    totalNetPrice: 1.99,
+    totalDiscounts: 2.46,
+    totalOriginalPrice: 1.99,
+    totalItemsPrice: 8.2,
+    totalNetPrice: 4.89,
     anyReturnItems: true,
   };
 

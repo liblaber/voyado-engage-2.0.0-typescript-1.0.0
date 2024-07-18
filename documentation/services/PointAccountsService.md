@@ -39,7 +39,7 @@ import { VoyadoEngage } from 'voyado_engage';
     token: 'YOUR_TOKEN',
   });
 
-  const { data } = await voyadoEngage.pointAccounts.pointAccountPointAccountGet(5);
+  const { data } = await voyadoEngage.pointAccounts.pointAccountPointAccountGet(2);
 
   console.log(data);
 })();
@@ -72,7 +72,7 @@ import { VoyadoEngage } from 'voyado_engage';
     token: 'YOUR_TOKEN',
   });
 
-  const { data } = await voyadoEngage.pointAccounts.pointAccountPointDefinition(5);
+  const { data } = await voyadoEngage.pointAccounts.pointAccountPointDefinition(7);
 
   console.log(data);
 })();
@@ -103,7 +103,7 @@ import { VoyadoEngage } from 'voyado_engage';
     token: 'YOUR_TOKEN',
   });
 
-  const { data } = await voyadoEngage.pointAccounts.pointAccountPointTransactions(7);
+  const { data } = await voyadoEngage.pointAccounts.pointAccountPointTransactions(6);
 
   console.log(data);
 })();
@@ -138,8 +138,8 @@ import { VoyadoEngage } from 'voyado_engage';
   });
 
   const { data } = await voyadoEngage.pointAccounts.pointAccountPointDefinitions({
-    offset: 8,
-    count: 3,
+    offset: 9,
+    count: 10,
   });
 
   console.log(data);
@@ -178,7 +178,7 @@ import { VoyadoEngage } from 'voyado_engage';
   const { data } = await voyadoEngage.pointAccounts.pointAccountPointAccountGet2({
     contactId: 'contactId',
     offset: 9,
-    count: 10,
+    count: 4,
   });
 
   console.log(data);
@@ -221,10 +221,10 @@ import { VoyadoEngage } from 'voyado_engage';
 
   const { data } = await voyadoEngage.pointAccounts.pointAccountPointTransactions2({
     contactId: 'contactId',
-    definitionId: 5,
-    accountId: 5,
-    offset: 8,
-    count: 8,
+    definitionId: 8,
+    accountId: 8,
+    offset: 4,
+    count: 5,
     filter: filter,
   });
 

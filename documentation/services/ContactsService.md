@@ -459,7 +459,7 @@ import { VoyadoEngage } from 'voyado_engage';
   });
 
   const { data } = await voyadoEngage.contacts.contactMessageGetLatestMessagesByContactId('contactId', {
-    count: 6,
+    count: 10,
   });
 
   console.log(data);
@@ -496,8 +496,8 @@ import { VoyadoEngage } from 'voyado_engage';
   });
 
   const { data } = await voyadoEngage.contacts.transactionsGetTransactionsByContactId('contactId', {
-    offset: 1,
-    count: 4,
+    offset: 9,
+    count: 10,
   });
 
   console.log(data);
@@ -533,7 +533,7 @@ import { VoyadoEngage } from 'voyado_engage';
 
   const { data } = await voyadoEngage.contacts.bonusPointTransactionsGetBonusPointTransactionsForContact('contactId', {
     offset: 3,
-    count: 3,
+    count: 10,
   });
 
   console.log(data);
@@ -874,7 +874,7 @@ import { ApiAdjustRewardPoints, VoyadoEngage } from 'voyado_engage';
   });
 
   const input: ApiAdjustRewardPoints = {
-    points: 1.86,
+    points: 6.21,
     description: 'description',
     type: 'type',
   };

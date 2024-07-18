@@ -54,10 +54,10 @@ import {
 
   const receiptTaxDetail: ReceiptTaxDetail = {
     description: 'description',
-    value: 1.89,
-    percent: 9.91,
-    totalIncludingTax: 9.84,
-    totalExcludingTax: 8.88,
+    value: 9.71,
+    percent: 4.3,
+    totalIncludingTax: 6.63,
+    totalExcludingTax: 2.27,
   };
 
   const receiptExtraDataItem: ReceiptExtraDataItem = {
@@ -68,14 +68,14 @@ import {
   const receiptPaymentMethod: ReceiptPaymentMethod = {
     type: 'type',
     description: 'description',
-    value: 5.08,
+    value: 6.04,
     extraData: [receiptExtraDataItem],
   };
 
   const receiptItemType = ReceiptItemType.PURCHASE;
 
   const receiptItemDiscount: ReceiptItemDiscount = {
-    value: 9.91,
+    value: 3.64,
     type: 'type',
     description: 'description',
   };
@@ -83,16 +83,16 @@ import {
   const receiptItem: ReceiptItem = {
     type: receiptItemType,
     sku: 'sku',
-    quantity: 1,
-    packQuantity: 8.92,
-    grossPaidPrice: 1.17,
-    taxAmount: 4.39,
-    taxPercent: 1.12,
+    quantity: 7,
+    packQuantity: 5.04,
+    grossPaidPrice: 1.45,
+    taxAmount: 4.58,
+    taxPercent: 0.3,
     extraData: [receiptExtraDataItem],
     articleNumber: 'articleNumber',
     articleName: 'articleName',
     articleGroup: 'articleGroup',
-    marginPercent: 6.91,
+    marginPercent: 1.43,
     awardsBonus: true,
     discounts: [receiptItemDiscount],
   };
@@ -118,8 +118,8 @@ import {
     createdDate: 'createdDate',
     storeExternalId: 'storeExternalId',
     currency: 'currency',
-    exchangeRateToGroupCurrency: 8.94,
-    totalGrossPrice: 7.19,
+    exchangeRateToGroupCurrency: 1.37,
+    totalGrossPrice: 7.36,
     taxDetails: [receiptTaxDetail],
     paymentMethods: [receiptPaymentMethod],
     items: [receiptItem],

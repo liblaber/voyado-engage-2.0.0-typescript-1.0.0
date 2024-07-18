@@ -39,7 +39,7 @@ import { StockLevelRequest, VoyadoEngage } from 'voyado_engage';
   const input: StockLevelRequest = {
     sku: 'sku',
     locale: 'locale',
-    quantity: 6,
+    quantity: 10,
     externalId: 'externalId',
   };
 

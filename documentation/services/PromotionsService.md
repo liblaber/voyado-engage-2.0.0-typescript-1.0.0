@@ -89,7 +89,7 @@ import {
 
   const assignDateRange: AssignDateRange = {
     unit: unit,
-    amount: 2103185352,
+    amount: 196645640,
   };
 
   const promotionValidityModel: PromotionValidityModel = {
@@ -231,7 +231,7 @@ import { AssignDateRange, PromotionValidityModel, VoyadoEngage } from 'voyado_en
 
   const assignDateRange: AssignDateRange = {
     unit: unit,
-    amount: 2103185352,
+    amount: 196645640,
   };
 
   const input: PromotionValidityModel = {
@@ -318,7 +318,7 @@ import {
 
   const assignDateRange: AssignDateRange = {
     unit: unit,
-    amount: 2103185352,
+    amount: 196645640,
   };
 
   const promotionValidityModel: PromotionValidityModel = {

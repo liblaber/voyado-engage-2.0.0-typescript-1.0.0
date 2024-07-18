@@ -109,8 +109,8 @@ import { VoyadoEngage } from 'voyado_engage';
   const status = ChallengeGetChallengeDefinitionsStatus.All;
 
   const { data } = await voyadoEngage.challenges.challengeGetChallengeDefinitions({
-    offset: 2,
-    count: 1,
+    offset: 6,
+    count: 10,
     status: status,
   });
 
@@ -154,8 +154,8 @@ import { VoyadoEngage } from 'voyado_engage';
   const { data } = await voyadoEngage.challenges.challengeGetChallenges({
     contactId: 'contactId',
     definitionId: 'definitionId',
-    offset: 3,
-    count: 1,
+    offset: 5,
+    count: 4,
     filter: filter,
   });
 

@@ -38,7 +38,7 @@ import { CartApiModel, CartItemApiModel, VoyadoEngage } from 'voyado_engage';
 
   const cartItemApiModel: CartItemApiModel = {
     sku: 'sku',
-    quantity: 10,
+    quantity: 9,
   };
 
   const input: CartApiModel = {

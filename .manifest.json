@@ -1,6 +1,6 @@
 {
   "liblabVersion": "2.1.19",
-  "date": "2024-07-18T12:55:18.149Z",
+  "date": "2024-07-18T16:29:39.634Z",
   "config": {
     "apiId": 354,
     "sdkName": "voyado_engage",
@@ -55,7 +55,7 @@
       "httpMethodsToRetry": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS"]
     },
     "multiTenant": true,
-    "specUrl": "https://dev-liblab-api-stack-specs.s3.us-east-1.amazonaws.com/354/open-api-spec.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA3C2RXH7MWUCMN7ON%2F20240718%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240718T125513Z&X-Amz-Expires=43200&X-Amz-Signature=1a56f84b2fbd442c21af35465c6977771aaebaf4ab4325d81d91117bf1a0529d&X-Amz-SignedHeaders=host&x-id=GetObject",
+    "specUrl": "https://dev-liblab-api-stack-specs.s3.us-east-1.amazonaws.com/354/open-api-spec.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIA3C2RXH7MWUCMN7ON%2F20240718%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240718T162937Z&X-Amz-Expires=43200&X-Amz-Signature=09883c3278a5e8b091371e57960d6db3433382620d0e969c27142cce60daf4c3&X-Amz-SignedHeaders=host&x-id=GetObject",
     "includeWatermark": false,
     "language": "typescript",
     "deliveryMethod": "zip",

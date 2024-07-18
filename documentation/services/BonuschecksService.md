@@ -39,8 +39,8 @@ import { VoyadoEngage } from 'voyado_engage';
   });
 
   const { data } = await voyadoEngage.bonuschecks.bonusChecksGetBonusChecksForContact('contactId', {
-    offset: 3,
-    count: 6,
+    offset: 7,
+    count: 1,
   });
 
   console.log(data);
@@ -77,8 +77,8 @@ import { VoyadoEngage } from 'voyado_engage';
   });
 
   const { data } = await voyadoEngage.bonuschecks.bonusChecksGetRedeemedBonusChecksForContact('contactId', {
-    offset: 3,
-    count: 8,
+    offset: 4,
+    count: 7,
   });
 
   console.log(data);
@@ -115,8 +115,8 @@ import { VoyadoEngage } from 'voyado_engage';
   });
 
   const { data } = await voyadoEngage.bonuschecks.bonusChecksGetAvailableBonusChecks('contactId', {
-    offset: 5,
-    count: 9,
+    offset: 9,
+    count: 7,
   });
 
   console.log(data);

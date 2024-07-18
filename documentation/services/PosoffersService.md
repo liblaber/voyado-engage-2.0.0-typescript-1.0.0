@@ -181,8 +181,8 @@ import { VoyadoEngage } from 'voyado_engage';
   });
 
   const { data } = await voyadoEngage.posoffers.posOfferGetAllPosOffersForContact('contactId', {
-    offset: 2,
-    count: 7,
+    offset: 3,
+    count: 123,
   });
 
   console.log(data);
@@ -219,8 +219,8 @@ import { VoyadoEngage } from 'voyado_engage';
   });
 
   const { data } = await voyadoEngage.posoffers.posOfferGetAvailablePosOffersForContact('contactId', {
-    offset: 3,
-    count: 123,
+    offset: 10,
+    count: 5,
   });
 
   console.log(data);
